@@ -27,7 +27,7 @@ const int   GridAlignMask = ~(GridAlign - 1);
 const int   HalfGridAlign = GridAlign / 2;
 
 
-static uint8_t animMap[ShieldStateCount][DirCount] = 
+static uint8_t animMap[ShieldStateCount][DirCount] =
 {
     {
         Anim_PI_LinkWalk_NoShield_Right,
@@ -51,7 +51,7 @@ static uint8_t animMap[ShieldStateCount][DirCount] =
     }
 };
 
-static uint8_t thrustAnimMap[DirCount] = 
+static uint8_t thrustAnimMap[DirCount] =
 {
     Anim_PI_LinkThrust_Right,
     Anim_PI_LinkThrust_Left,
@@ -109,7 +109,7 @@ SpriteAnimator* Player::GetAnimator()
 
 void Player::Update()
 {
-    // Do this in order to flash while you have the clock. It doesn't matter if it becomes zero, 
+    // Do this in order to flash while you have the clock. It doesn't matter if it becomes zero,
     // because foes will check invincibilityTimer AND the clock item.
     // I suspect that the original game did this in the drawing code.
     Profile& profile = World::GetProfile();
@@ -244,7 +244,7 @@ void Player::CheckWater()
 
     if (   World::GetDoorwayDir() != Dir_None
         || World::GetItem( ItemSlot_Ladder ) == 0
-        || (state & 0xC0) == 0x40 
+        || (state & 0xC0) == 0x40
         || World::GetLadder() != nullptr )
         return;
 
@@ -276,7 +276,7 @@ void Player::CheckWarp()
     if ( World::GetFromUnderground() != 0 || tileOffset != 0 )
         return;
 
-    if (   World::IsOverworld() 
+    if (   World::IsOverworld()
         && World::GetRoomId() == 0x22 )
     {
         if ( (objX & 7) != 0 )
@@ -512,7 +512,7 @@ void Player::CalcAlignedMoving()
     if ( avoidTurningWhenDiag == 0 )
         goto TakeFacingPerpDir;
 
-    if ( World::IsOverworld() 
+    if ( World::IsOverworld()
         || objX != 0x78
         || objY != 0x5D )
     {
@@ -760,8 +760,8 @@ int UseBomb( int x, int y, Direction facingDir )
         otherSlot++;
 
     Object* otherObj = World::GetObject( otherSlot );
-    if ( otherObj != nullptr 
-        && otherObj->GetType() == Obj_Bomb 
+    if ( otherObj != nullptr
+        && otherObj->GetType() == Obj_Bomb
         && ((Bomb*) otherObj)->GetLifetimeState() < Bomb::Blasting )
         return 0;
 
@@ -795,7 +795,7 @@ int UseBoomerang( int x, int y, Direction facingDir )
     if ( moving != Dir_None )
         facingDir = moving;
 
-    Boomerang* boomerang = MakeBoomerang( 
+    Boomerang* boomerang = MakeBoomerang(
         x, y, facingDir, distance, 3.0, World::GetPlayer(), BoomerangSlot );
     World::SetObject( BoomerangSlot, boomerang );
     return 6;
@@ -956,7 +956,7 @@ void Player::Move()
     // Maybe it's only done to set up the call to FindUnblockedDir in CheckTileCollision?
 
     // The original game resets ~moving~ here, if player's major state is $10 or $20.
-    // What we do instead in that case is to avoid calling ObjMove in Player. I think 
+    // What we do instead in that case is to avoid calling ObjMove in Player. I think
     // that it's clearer this way.
 
     dir = StopAtBlock( dir );
@@ -966,7 +966,7 @@ void Player::Move()
     {
         GameMode mode = World::GetMode();
 
-        if (   mode == Mode_PlayCellar 
+        if (   mode == Mode_PlayCellar
             || mode == Mode_PlayCave
             || mode == Mode_PlayShortcuts )
         {
@@ -1092,7 +1092,7 @@ Direction Player::MoveOnLadder( Direction dir, int distance )
     if ( oppositeDir == player->GetFacing() )
         return oppositeDir;
 
-    if ( oppositeDir != Dir_Down 
+    if ( oppositeDir != Dir_Down
         || moving != Dir_Up )
         return Dir_None;
 
@@ -1103,7 +1103,7 @@ Direction Player::MoveOnLadder( Direction dir, int distance )
     if ( CollidesWithTileMoving( objX, objY - 8, dir ) )
         return Dir_None;
 
-    // ORIGINAL: The routine will run again. It'll finish, because now (ladder.facing = dir), 
+    // ORIGINAL: The routine will run again. It'll finish, because now (ladder.facing = dir),
     //           which is one of the conditions that ends this function.
     //           But, why not return dir right here?
     return MoveOnLadder( dir, distance );
@@ -1172,8 +1172,8 @@ void Player::StopPlayer()
 // F14E
 Direction Player::CheckWorldBounds( Direction dir )
 {
-    if ( World::GetMode() == Mode_Play 
-        && nullptr == World::GetLadder() 
+    if ( World::GetMode() == Mode_Play
+        && nullptr == World::GetLadder()
         && tileOffset == 0 )
     {
         if ( HitsWorldLimit() )

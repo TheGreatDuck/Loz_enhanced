@@ -23,12 +23,12 @@ const char* SaveFileNamePattern = "z1_%d.sav";
 
 static errno_t OpenFile( FILE** file, int slot, OpenMode mode )
 {
-    ALLEGRO_PATH* path = nullptr;
-    const char* pathStr = nullptr;
-    char fileName[32] = "";
+    //ALLEGRO_PATH* path = nullptr;
+    //const char* pathStr = nullptr;
+    //char fileName[32] = "";
     errno_t err = 0;
 
-    path = al_get_standard_path( ALLEGRO_USER_DATA_PATH );
+    /*path = al_get_standard_path( ALLEGRO_USER_DATA_PATH );
     if ( path == nullptr )
         return EPERM;
 
@@ -51,7 +51,7 @@ static errno_t OpenFile( FILE** file, int slot, OpenMode mode )
         err = fopen_s( file, pathStr, "rb" );
     }
 
-    al_destroy_path( path );
+    al_destroy_path( path );*/
 
     return err;
 }
@@ -76,7 +76,7 @@ void SaveFolder::ReadSummaries( ProfileSummarySnapshot& summaries )
 
         if ( lenRead < 1 )
         {
-            memset( &summaries.Summaries[i], 0, sizeof ProfileSummary );
+            memset( &summaries.Summaries[i], 0, sizeof(ProfileSummary) );
         }
         else
         {

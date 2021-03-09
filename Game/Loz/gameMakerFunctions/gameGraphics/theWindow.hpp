@@ -1,0 +1,14 @@
+void window_set_visible(double visible);
+double window_get_visible();
+void window_set_fullscreen(double full);
+double window_get_fullscreen();
+void window_set_showborder(double show);
+double window_get_showborder();
+void window_set_showicons(double show);
+double window_get_showicons();
+void window_set_stayontop(double stay);
+double window_get_stayontop();
+void window_set_sizeable(double sizeable);
+double window_get_sizeable();
+double window_get_width();
+double window_get_height();

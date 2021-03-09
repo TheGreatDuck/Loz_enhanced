@@ -502,7 +502,7 @@ public:
 };
 
 
-Boomerang* MakeBoomerang( 
+Boomerang* MakeBoomerang(
     int x, int y, Direction moving, int distance, float speed, Object* owner, int slot );
 Object* MakeProjectile( ObjType type, int x, int y, Direction moving, int slot );
 Object* MakePerson( int type, const CaveSpec* spec, int x, int y );

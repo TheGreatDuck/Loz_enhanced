@@ -36,7 +36,7 @@ const int BluePal   = 5;
 const int RedPal    = 6;
 const int OtherPal  = 7;
 
-static const uint8_t equippedItemIds[] = 
+static const uint8_t equippedItemIds[] =
 {
     0,          // Sword
     0xFF,       // Bombs
@@ -76,15 +76,15 @@ static bool CrossesProjectileBoundary( int x, int y, Direction dir )
         && x > 0xEB )
         return true;
 
-    if ( (dir & Dir_Left) != 0 
+    if ( (dir & Dir_Left) != 0
         && x < 6 )
         return true;
 
-    if ( (dir & Dir_Down) != 0 
+    if ( (dir & Dir_Down) != 0
         && y > 0xDE )
         return true;
 
-    if ( (dir & Dir_Up) != 0 
+    if ( (dir & Dir_Up) != 0
         && y < 0x3F )
         return true;
 
@@ -148,7 +148,7 @@ struct BlockSpec
     bool    allowHorizontal;
 };
 
-BlockSpec rockSpec = 
+BlockSpec rockSpec =
 {
     Tile_Rock,
     Mob_Rock,
@@ -158,7 +158,7 @@ BlockSpec rockSpec =
     false
 };
 
-BlockSpec headstoneSpec = 
+BlockSpec headstoneSpec =
 {
     Tile_Headstone,
     Mob_Headstone,
@@ -168,7 +168,7 @@ BlockSpec headstoneSpec =
     false
 };
 
-BlockSpec blockSpec = 
+BlockSpec blockSpec =
 {
     Tile_Block,
     Mob_Block,
@@ -258,7 +258,7 @@ void BlockObjBase::UpdateIdle()
         }
         else
         {
-            if ( objY == playerY 
+            if ( objY == playerY
                 && abs( objX - playerX ) <= World::MobTileWidth )
                 pushed = true;
         }
@@ -317,11 +317,11 @@ void BlockObjBase::Draw()
 {
     if ( curUpdate == &BlockObjBase::UpdateMoving )
     {
-        Graphics::DrawStripSprite16x16( 
-            Sheet_Background, 
-            spec->blockTile, 
-            objX, 
-            objY, 
+        Graphics::DrawStripSprite16x16(
+            Sheet_Background,
+            spec->blockTile,
+            objX,
+            objY,
             World::GetInnerPalette() );
     }
 }
@@ -495,10 +495,10 @@ void Tree::Update()
     {
         Fire* fire = (Fire*) World::GetObject( i );
 
-        if ( fire == nullptr 
-            || fire->GetType() != Obj_Fire 
+        if ( fire == nullptr
+            || fire->GetType() != Obj_Fire
             || fire->IsDeleted()
-            || fire->GetLifetimeState() != Fire::Standing 
+            || fire->GetLifetimeState() != Fire::Standing
             || fire->GetObjectTimer() != 2 )
             continue;
 
@@ -526,7 +526,7 @@ void Tree::Draw()
 const int Clouds = 4;
 const int CloudFrames = 2;
 
-static Point cloudPositions[CloudFrames][Clouds] = 
+static Point cloudPositions[CloudFrames][Clouds] =
 {
     {
         { 0, 0 },
@@ -627,7 +627,7 @@ void Bomb::Draw()
 
         for ( int i = 0; i < Clouds; i++ )
         {
-            animator.Draw( 
+            animator.Draw(
                 Sheet_PlayerAndItems, objX + positions[i].X, objY + positions[i].Y, BlueFgPalette );
         }
     }
@@ -670,10 +670,10 @@ void RockWall::Update()
     {
         Bomb* bomb = (Bomb*) World::GetObject( i );
 
-        if ( bomb == nullptr 
-            || bomb->GetType() != Obj_Bomb 
+        if ( bomb == nullptr
+            || bomb->GetType() != Obj_Bomb
             || bomb->IsDeleted()
-            || bomb->GetLifetimeState() != Bomb::Blasting 
+            || bomb->GetLifetimeState() != Bomb::Blasting
             )
             continue;
 
@@ -702,7 +702,7 @@ const int   DirCount = 4;
 const int   SwordStates = 5;
 const int   LastSwordState = SwordStates - 1;
 
-static Point swordOffsets[SwordStates][DirCount] = 
+static Point swordOffsets[SwordStates][DirCount] =
 {
     {
         { -8, -11 },
@@ -733,7 +733,7 @@ static Point swordOffsets[SwordStates][DirCount] =
     },
 };
 
-static uint8_t  swordAnimMap[DirCount] = 
+static uint8_t  swordAnimMap[DirCount] =
 {
     Anim_PI_Sword_Right,
     Anim_PI_Sword_Left,
@@ -741,7 +741,7 @@ static uint8_t  swordAnimMap[DirCount] =
     Anim_PI_Sword_Up
 };
 
-static uint8_t  rodAnimMap[DirCount] = 
+static uint8_t  rodAnimMap[DirCount] =
 {
     Anim_PI_Wand_Right,
     Anim_PI_Wand_Left,
@@ -749,7 +749,7 @@ static uint8_t  rodAnimMap[DirCount] =
     Anim_PI_Wand_Up,
 };
 
-static uint8_t  swordStateDurations[SwordStates] = 
+static uint8_t  swordStateDurations[SwordStates] =
 {
     5,
     8,
@@ -1056,10 +1056,10 @@ void PlayerSwordShot::Draw()
             int bottom  = objY + 2 + d + yOffset;
 
             image.Draw( Sheet_PlayerAndItems, left, top, palette, 0 );
-            image.Draw( Sheet_PlayerAndItems, right, top, palette, ALLEGRO_FLIP_HORIZONTAL );
-            image.Draw( Sheet_PlayerAndItems, left, bottom, palette, ALLEGRO_FLIP_VERTICAL );
-            image.Draw( Sheet_PlayerAndItems, right, bottom, palette, 
-                ALLEGRO_FLIP_HORIZONTAL | ALLEGRO_FLIP_VERTICAL );
+            //image.Draw( Sheet_PlayerAndItems, right, top, palette, ALLEGRO_FLIP_HORIZONTAL );
+            //image.Draw( Sheet_PlayerAndItems, left, bottom, palette, ALLEGRO_FLIP_VERTICAL );
+            //image.Draw( Sheet_PlayerAndItems, right, bottom, palette,
+            //    ALLEGRO_FLIP_HORIZONTAL | ALLEGRO_FLIP_VERTICAL );
         }
     }
 }
@@ -1129,7 +1129,7 @@ void FlyingRock::Draw()
 //  Fireball
 //----------------------------------------------------------------------------
 
-Direction sector16Dirs[16] = 
+Direction sector16Dirs[16] =
 {
     Dir_Right,
     Dir_Right | Dir_Down,
@@ -1282,7 +1282,7 @@ void Boomerang::Update()
     case 1: UpdateLeaveFast(); break;
     case 2: UpdateSpark(); break;
     case 3: UpdateLeaveSlow(); break;
-    case 4: 
+    case 4:
     case 5: UpdateReturn(); break;
     }
 }
@@ -1301,7 +1301,7 @@ void Boomerang::UpdateLeaveFast()
     }
     else
     {
-        if (   abs( startX - objX ) < distanceTarget 
+        if (   abs( startX - objX ) < distanceTarget
             && abs( startY - objY ) < distanceTarget )
         {
             AdvanceAnimAndCheckCollision();
@@ -1461,7 +1461,7 @@ void Boomerang::Draw()
 // MagicWave
 //----------------------------------------------------------------------------
 
-static const uint8_t waveAnimMap[DirCount] = 
+static const uint8_t waveAnimMap[DirCount] =
 {
     Anim_PI_Wave_Right,
     Anim_PI_Wave_Left,
@@ -1535,7 +1535,7 @@ void MagicWave::AddFire()
 // Arrow
 //----------------------------------------------------------------------------
 
-static const uint8_t arrowAnimMap[DirCount] = 
+static const uint8_t arrowAnimMap[DirCount] =
 {
     Anim_PI_Arrow_Right,
     Anim_PI_Arrow_Left,
@@ -1643,7 +1643,7 @@ const int PriceY = 0xB0;
 static const int itemXs[]  = { 0x58, 0x78, 0x98 };
 static const int priceXs[] = { 0x48, 0x68, 0x88 };
 
-static const ItemGraphics sPersonGraphics[] = 
+static const ItemGraphics sPersonGraphics[] =
 {
     { Anim_PI_OldMan,       RedPal },
     { Anim_PI_OldWoman,     RedPal },
@@ -2271,7 +2271,7 @@ void ItemObj::Update()
 
 void ItemObj::Draw()
 {
-    if (   isRoomItem 
+    if (   isRoomItem
         || timer < 0x1E0
         || (timer & 2) != 0 )
     {
@@ -2498,7 +2498,7 @@ void Dock::Draw()
 //  Free functions
 //----------------------------------------------------------------------------
 
-static const ItemGraphics sItemGraphics[] = 
+static const ItemGraphics sItemGraphics[] =
 {
     { Anim_PI_BombItem,         BluePal },
     { Anim_PI_SwordItem,        PlayerPal },
@@ -2575,14 +2575,14 @@ Object* MakeProjectile( ObjType type, int x, int y, Direction moving, int slot )
     case Obj_Arrow: obj = new Arrow( x, y, moving ); break;
     case Obj_MagicWave:
     case Obj_MagicWave2: obj = new MagicWave( type, x, y, moving ); break;
-    default: assert( false ); break;
+    default: /*assert( false );*/ break;
     }
 
     World::SetCurrentObjectSlot( origSlot );
     return obj;
 }
 
-Boomerang* MakeBoomerang( 
+Boomerang* MakeBoomerang(
     int x, int y, Direction moving, int distance, float speed, Object* owner, int slot )
 {
     int origSlot = World::GetCurrentObjectSlot();
@@ -2660,7 +2660,7 @@ void DrawChar( uint8_t ch, int x, int y, int palette )
     int srcX = (ch & 0x0F) * 8;
     int srcY = (ch & 0xF0) / 2;
 
-    Graphics::DrawTile( 
+    Graphics::DrawTile(
         Sheet_Font,
         srcX, srcY,
         8, 8,

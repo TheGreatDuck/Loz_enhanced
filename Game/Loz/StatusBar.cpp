@@ -47,7 +47,7 @@ struct TileInst
     uint8_t Palette;
 };
 
-static const TileInst uiTiles[] = 
+static const TileInst uiTiles[] =
 {
     { 0xF7, 88, 24, 1 },
     { 0xF9, 88, 40, 1 },
@@ -102,11 +102,11 @@ void StatusBar::EnableFeatures( Features features, bool enable )
 
 void StatusBar::Draw( int baseY )
 {
-    ALLEGRO_COLOR backColor = al_map_rgb( 0, 0, 0 );
-    Draw( baseY, backColor );
+    //ALLEGRO_COLOR backColor = al_map_rgb( 0, 0, 0 );
+    //Draw( baseY, backColor );
 }
 
-void StatusBar::Draw( int baseY, ALLEGRO_COLOR backColor )
+/*void StatusBar::Draw( int baseY, ALLEGRO_COLOR backColor )
 {
     Graphics::SetClip( 0, baseY, StatusBarWidth, StatusBarHeight );
 
@@ -122,7 +122,7 @@ void StatusBar::Draw( int baseY, ALLEGRO_COLOR backColor )
     DrawItems( baseY );
 
     Graphics::ResetClip();
-}
+}*/
 
 void StatusBar::DrawMiniMap( int baseY )
 {
@@ -226,7 +226,7 @@ void StatusBar::DrawUWMiniMap( int baseY )
         {
             if ( (b & 0x80) != 0 )
             {
-                Graphics::DrawTile( 
+                Graphics::DrawTile(
                     Sheet_Font,
                     0x7 * 8, 0x6 * 8,
                     8, 4,

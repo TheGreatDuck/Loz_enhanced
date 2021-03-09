@@ -1,0 +1,13 @@
+double display_get_width();
+double display_get_height();
+double display_get_colordepth();
+double display_get_frequency();
+void display_set_size(double w,double h);
+void display_set_colordepth(double coldepth);
+void display_set_frequency(double frequency);
+void display_set_all(double w,double h,double frequency,double coldepth);
+double display_test_all(double w,double h,double frequency,double coldepth);
+void display_reset();
+double display_mouse_get_x();
+double display_mouse_get_y();
+void display_mouse_set(double x,double y);

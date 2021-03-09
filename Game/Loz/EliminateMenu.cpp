@@ -5,6 +5,7 @@
    See the LICENSE text file for details.
 */
 
+#include "gameMakerLibrary.hpp"
 #include "Common.h"
 #include "EliminateMenu.h"
 #include "Graphics.h"
@@ -17,14 +18,14 @@
 #include "World.h"
 
 
-const static uint8_t EliminateStr[] = 
+const static uint8_t EliminateStr[] =
 {
     0x6A, 0x6A, 0x6A, 0x6A,
     0x0E, 0x15, 0x12, 0x16, 0x12, 0x17, 0x0A, 0x1D, 0x12, 0x18, 0x17, 0x24, 0x24, 0x16, 0x18, 0x0D, 0x0E,
     0x6A, 0x6A, 0x6A, 0x6A
 };
 
-const static uint8_t EliminationEndStr[] = 
+const static uint8_t EliminationEndStr[] =
 {
     0x0E, 0x15, 0x12, 0x16, 0x12, 0x17, 0x0A, 0x1D, 0x12, 0x18, 0x17, 0x24, 0x0E, 0x17, 0x0D,
 };
@@ -51,18 +52,18 @@ void EliminateMenu::DeleteCurrentProfile()
 {
     Profile profile = { 0 };
     SaveFolder::WriteProfile( selectedIndex, profile );
-    memset( &summaries->Summaries[selectedIndex], 0, sizeof ProfileSummary );
+    memset( &summaries->Summaries[selectedIndex], 0, sizeof(ProfileSummary) );
     Sound::PlayEffect( SEffect_player_hit );
 }
 
 void EliminateMenu::Update()
 {
-    if ( Input::IsButtonPressing( InputButtons::Select ) )
+    if (keyboard_check_pressed(*vk_space))
     {
         SelectNext();
         Sound::PlayEffect( SEffect_cursor );
     }
-    else if ( Input::IsButtonPressing( InputButtons::Start ) )
+    else if (keyboard_check_pressed(*vk_enter))
     {
         if ( selectedIndex < 3 )
             DeleteCurrentProfile();
@@ -75,7 +76,7 @@ void EliminateMenu::Draw()
 {
     Graphics::Begin();
 
-    al_clear_to_color( al_map_rgb( 0, 0, 0 ) );
+//    al_clear_to_color( al_map_rgb( 0, 0, 0 ) );
 
     DrawString( EliminateStr, sizeof EliminateStr, 0x20, 0x18, 0 );
     DrawString( EliminationEndStr, sizeof EliminationEndStr, 0x50, 0x78, 0 );

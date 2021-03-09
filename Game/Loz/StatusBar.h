@@ -38,7 +38,7 @@ public:
 
     void EnableFeatures( Features features, bool enable );
     void Draw( int baseY );
-    void Draw( int baseY, ALLEGRO_COLOR backColor );
+//    void Draw( int baseY, ALLEGRO_COLOR backColor );
 
 private:
     void DrawTile( int tile, int x, int y, int palette );

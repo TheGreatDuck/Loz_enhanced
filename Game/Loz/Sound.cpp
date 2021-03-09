@@ -9,7 +9,7 @@
 #include "Sound.h"
 #include "SoundId.h"
 #include "Util.h"
-#include <allegro5\allegro_audio.h>
+//#include <allegro5\allegro_audio.h>
 
 
 enum
@@ -64,7 +64,7 @@ static int pausedEffectPos[Instances];
 
 static void PlaySongInternal( int songId, int streamId, bool loop, bool play )
 {
-    al_destroy_audio_stream( streams[streamId] );
+    /*al_destroy_audio_stream( streams[streamId] );
 
     streams[streamId] = al_load_audio_stream( songs[songId].Filename, 2, 2048 );
     if ( streams[streamId] == nullptr )
@@ -96,12 +96,12 @@ static void PlaySongInternal( int songId, int streamId, bool loop, bool play )
     }
 
     al_set_audio_stream_playmode( streams[streamId], playMode );
-    al_set_audio_stream_playing( streams[streamId], play );
+    al_set_audio_stream_playing( streams[streamId], play );*/
 }
 
 bool Sound::Init()
 {
-    defaultVoice = al_create_voice( 44100, ALLEGRO_AUDIO_DEPTH_INT16, ALLEGRO_CHANNEL_CONF_2 );
+    /*defaultVoice = al_create_voice( 44100, ALLEGRO_AUDIO_DEPTH_INT16, ALLEGRO_CHANNEL_CONF_2 );
     if ( defaultVoice == nullptr )
         return false;
 
@@ -135,14 +135,14 @@ bool Sound::Init()
         effectSamples[i] = al_load_sample( effects[i].Filename );
         if ( effectSamples[i] == nullptr )
             return false;
-    }
+    }*/
 
     return true;
 }
 
 void Sound::Uninit()
 {
-    for ( int i = 0; i < SEffect_Max; i++ )
+    /*for ( int i = 0; i < SEffect_Max; i++ )
     {
         al_destroy_sample( effectSamples[i] );
     }
@@ -158,12 +158,12 @@ void Sound::Uninit()
     }
 
     al_destroy_mixer( defaultMixer );
-    al_destroy_voice( defaultVoice );
+    al_destroy_voice( defaultVoice );*/
 }
 
 static void UpdateSongs()
 {
-    if ( paused )
+    /*if ( paused )
         return;
 
     if ( streams[Sound::EventSongStream] == nullptr
@@ -178,14 +178,14 @@ static void UpdateSongs()
         if ( streams[i] != nullptr )
         {
             al_seek_audio_stream_secs( streams[i], savedPos[i] );
-            al_set_audio_stream_playing( streams[i], true ); 
+            al_set_audio_stream_playing( streams[i], true );
         }
-    }
+    }*/
 }
 
 static void UpdateEffects()
 {
-    for ( int i = 0; i < Instances; i++ )
+    /*for ( int i = 0; i < Instances; i++ )
     {
         int id = effectRequests[i].SoundId;
         effectRequests[i].SoundId = NoSound;
@@ -207,7 +207,7 @@ static void UpdateEffects()
                 al_play_sample_instance( instance );
             }
         }
-    }
+    }*/
 }
 
 void Sound::Update()
@@ -218,7 +218,7 @@ void Sound::Update()
 
 void Sound::PlaySong( int songId, int streamId, bool loop )
 {
-    if ( streamId < 0 || streamId >= LoPriStreams )
+    /*if ( streamId < 0 || streamId >= LoPriStreams )
         return;
     if ( songId < 0 || songId >= _countof( songs ) )
         return;
@@ -230,12 +230,12 @@ void Sound::PlaySong( int songId, int streamId, bool loop )
     }
 
     PlaySongInternal( songId, streamId, loop, false );
-    savedPos[streamId] = 0;
+    savedPos[streamId] = 0;*/
 }
 
 void Sound::PushSong( int songId )
 {
-    if ( songId < 0 || songId >= _countof( songs ) )
+    /*if ( songId < 0 || songId >= _countof( songs ) )
         return;
 
     for ( int i = 0; i < LoPriStreams; i++ )
@@ -247,12 +247,12 @@ void Sound::PushSong( int songId )
         }
     }
 
-    PlaySongInternal( songId, EventSongStream, false, true );
+    PlaySongInternal( songId, EventSongStream, false, true );*/
 }
 
 void Sound::StopSongs()
 {
-    for ( int i = 0; i < Streams; i++ )
+    /*for ( int i = 0; i < Streams; i++ )
     {
         if ( streams[i] == nullptr )
             continue;
@@ -260,12 +260,12 @@ void Sound::StopSongs()
         al_set_audio_stream_playing( streams[i], false );
         al_destroy_audio_stream( streams[i] );
         streams[i] = nullptr;
-    }
+    }*/
 }
 
 void Sound::PlayEffect( int id, bool loop, int instance )
 {
-    if ( id < 0 || id >= _countof( effectSamples ) )
+    /*if ( id < 0 || id >= _countof( effectSamples ) )
         return;
     if ( instance < -1 || instance >= Instances )
         return;
@@ -283,33 +283,33 @@ void Sound::PlayEffect( int id, bool loop, int instance )
     {
         effectRequests[index].SoundId = id;
         effectRequests[index].Loop = loop;
-    }
+    }*/
 }
 
 void Sound::StopEffect( int instance )
 {
-    al_stop_sample_instance( sampleInstances[instance] );
-    effectRequests[instance].SoundId = NoSound;
-    effectRequests[instance].Loop = false;
+    //al_stop_sample_instance( sampleInstances[instance] );
+    //effectRequests[instance].SoundId = NoSound;
+    //effectRequests[instance].Loop = false;
 }
 
 void Sound::StopEffects()
 {
-    for ( int i = 0; i < Instances; i++ )
-    {
-        StopEffect( i );
-    }
+    //for ( int i = 0; i < Instances; i++ )
+    //{
+    //    StopEffect( i );
+    //}
 }
 
 void Sound::StopAll()
 {
-    StopSongs();
-    StopEffects();
+    //StopSongs();
+    //StopEffects();
 }
 
 void Sound::Pause()
 {
-    paused = true;
+    /*paused = true;
 
     for ( int i = Streams - 1; i >= 0; i-- )
     {
@@ -333,12 +333,12 @@ void Sound::Pause()
             pausedEffectPos[i] = al_get_sample_instance_position( sampleInstances[i] );
             al_set_sample_instance_playing( sampleInstances[i], false );
         }
-    }
+    }*/
 }
 
 void Sound::Unpause()
 {
-    paused = false;
+    /*paused = false;
 
     for ( int i = Streams - 1; i >= 0; i-- )
     {
@@ -362,5 +362,5 @@ void Sound::Unpause()
             al_set_sample_instance_position( sampleInstances[i], pausedEffectPos[i] );
             al_set_sample_instance_playing( sampleInstances[i], true );
         }
-    }
+    }*/
 }

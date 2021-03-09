@@ -5,6 +5,7 @@
    See the LICENSE text file for details.
 */
 
+#include "gameMakerLibrary.hpp"
 #include "Common.h"
 #include "World.h"
 #include "WorldImpl.h"
@@ -158,12 +159,12 @@ const int DoorHoleCoordV = 0x78;
 
 const int UWBombRadius = 32;
 
-static const uint8_t levelGroups[] = 
+static const uint8_t levelGroups[] =
 {
     0, 0, 1, 1, 0, 1, 0, 1, 2
 };
 
-const Point doorMiddles[] = 
+const Point doorMiddles[] =
 {
     { 0xE0, 0x98 },
     { 0x20, 0x98 },
@@ -171,7 +172,7 @@ const Point doorMiddles[] =
     { 0x80, 0x60 }
 };
 
-const int doorSrcYs[] = 
+const int doorSrcYs[] =
 {
     64,
     96,
@@ -179,7 +180,7 @@ const int doorSrcYs[] =
     32
 };
 
-const Point doorPos[] = 
+const Point doorPos[] =
 {
     { 224,  136 },
     { 0,    136 },
@@ -193,7 +194,7 @@ struct DoorStateFaces
     uint8_t Open;
 };
 
-const DoorStateFaces doorFaces[] = 
+const DoorStateFaces doorFaces[] =
 {
     { 0, 0 },
     { 3, 3 },
@@ -248,7 +249,7 @@ struct EquipValue
 // The item ID to item slot map is at $6B14, and copied to RAM at $72A4.
 // The item ID to item value map is at $6B38, and copied to RAM at $72C8.
 // They're combined here.
-static const EquipValue sItemToEquipment[] = 
+static const EquipValue sItemToEquipment[] =
 {
     { 4, ItemSlot_Bombs },
     { 1, ItemSlot_Sword },
@@ -296,7 +297,7 @@ const int FirstCaveIndex = 0x10;
 const int TriforcePieceX = 0x78;
 
 
-WorldImpl::TileActionFunc WorldImpl::sActionFuncs[] = 
+WorldImpl::TileActionFunc WorldImpl::sActionFuncs[] =
 {
     &WorldImpl::NoneTileAction,
     &WorldImpl::PushTileAction,
@@ -312,7 +313,7 @@ WorldImpl::TileActionFunc WorldImpl::sActionFuncs[] =
     &WorldImpl::BlockTileAction,
 };
 
-WorldImpl::TileBehaviorFunc WorldImpl::sBehaviorFuncs[] = 
+WorldImpl::TileBehaviorFunc WorldImpl::sBehaviorFuncs[] =
 {
     &WorldImpl::NoneTileAction,
     &WorldImpl::NoneTileAction,
@@ -359,7 +360,7 @@ WorldImpl::TileBehaviorFunc WorldImpl::sBehaviorFuncs[] =
     &WorldImpl::NoneTileAction,
 };
 
-WorldImpl::UpdateFunc WorldImpl::sModeFuncs[Modes] = 
+WorldImpl::UpdateFunc WorldImpl::sModeFuncs[Modes] =
 {
     nullptr,
     &WorldImpl::UpdateGameMenu,
@@ -385,7 +386,7 @@ WorldImpl::UpdateFunc WorldImpl::sModeFuncs[Modes] =
     &WorldImpl::UpdatePlayCave,
 };
 
-WorldImpl::DrawFunc WorldImpl::sDrawFuncs[Modes] = 
+WorldImpl::DrawFunc WorldImpl::sDrawFuncs[Modes] =
 {
     nullptr,
     &WorldImpl::DrawGameMenu,
@@ -428,7 +429,7 @@ WorldImpl::UpdateFunc WorldImpl::sPlayCaveFuncs[PlayCaveState::MaxSubstate] =
     &WorldImpl::UpdatePlayCave_Walk,
 };
 
-WorldImpl::UpdateFunc WorldImpl::sEndLevelFuncs[EndLevelState::MaxSubstate] = 
+WorldImpl::UpdateFunc WorldImpl::sEndLevelFuncs[EndLevelState::MaxSubstate] =
 {
     &WorldImpl::UpdateEndLevel_Start,
     &WorldImpl::UpdateEndLevel_Wait,
@@ -439,7 +440,7 @@ WorldImpl::UpdateFunc WorldImpl::sEndLevelFuncs[EndLevelState::MaxSubstate] =
     &WorldImpl::UpdateEndLevel_Wait,
 };
 
-WorldImpl::UpdateFunc WorldImpl::sWinGameFuncs[WinGameState::MaxSubstate] = 
+WorldImpl::UpdateFunc WorldImpl::sWinGameFuncs[WinGameState::MaxSubstate] =
 {
     &WorldImpl::UpdateWinGame_Start,
     &WorldImpl::UpdateWinGame_Text1,
@@ -453,7 +454,7 @@ WorldImpl::UpdateFunc WorldImpl::sWinGameFuncs[WinGameState::MaxSubstate] =
     &WorldImpl::UpdateWinGame_Credits,
 };
 
-WorldImpl::UpdateFunc WorldImpl::sScrollFuncs[ScrollState::MaxSubstate] = 
+WorldImpl::UpdateFunc WorldImpl::sScrollFuncs[ScrollState::MaxSubstate] =
 {
     &WorldImpl::UpdateScroll_Start,
     &WorldImpl::UpdateScroll_AnimatingColors,
@@ -462,7 +463,7 @@ WorldImpl::UpdateFunc WorldImpl::sScrollFuncs[ScrollState::MaxSubstate] =
     &WorldImpl::UpdateScroll_Scroll,
 };
 
-WorldImpl::UpdateFunc WorldImpl::sDeathFuncs[DeathState::MaxSubstate] = 
+WorldImpl::UpdateFunc WorldImpl::sDeathFuncs[DeathState::MaxSubstate] =
 {
     &WorldImpl::UpdateDie_Start,
     &WorldImpl::UpdateDie_Flash,
@@ -475,7 +476,7 @@ WorldImpl::UpdateFunc WorldImpl::sDeathFuncs[DeathState::MaxSubstate] =
     &WorldImpl::UpdateDie_GameOver,
 };
 
-WorldImpl::UpdateFunc WorldImpl::sLeaveCellarFuncs[LeaveCellarState::MaxSubstate] = 
+WorldImpl::UpdateFunc WorldImpl::sLeaveCellarFuncs[LeaveCellarState::MaxSubstate] =
 {
     &WorldImpl::UpdateLeaveCellar_Start,
     &WorldImpl::UpdateLeaveCellar_FadeOut,
@@ -577,13 +578,13 @@ int GetDoorStateFace( int type, bool state )
 
 void ClearScreen()
 {
-    al_clear_to_color( al_map_rgb( 0, 0, 0 ) );
+//    al_clear_to_color( al_map_rgb( 0, 0, 0 ) );
 }
 
 void ClearScreen( int sysColor )
 {
-    ALLEGRO_COLOR color = Graphics::GetSystemColor( sysColor );
-    al_clear_to_color( color );
+//    ALLEGRO_COLOR color = Graphics::GetSystemColor( sysColor );
+//    al_clear_to_color( color );
 }
 
 void WorldImpl::ClearDeadObjectQueue()
@@ -742,7 +743,7 @@ void WorldImpl::ClearRoomItemData()
 
 void WorldImpl::SetPlayerColor()
 {
-    static const uint8_t sysColors[] = 
+    static const uint8_t sysColors[] =
     {
         0x29,
         0x32,
@@ -756,7 +757,7 @@ void WorldImpl::SetPlayerColor()
 
 static void SetFlashPalette()
 {
-    static const uint8_t palette[] = 
+    static const uint8_t palette[] =
     {
         0x0F,
         0x30,
@@ -884,13 +885,13 @@ WorldImpl::~WorldImpl()
 
     if ( wallsBmp != nullptr )
     {
-        al_destroy_bitmap( wallsBmp );
+//        al_destroy_bitmap( wallsBmp );
         wallsBmp = nullptr;
     }
 
     if ( doorsBmp != nullptr )
     {
-        al_destroy_bitmap( doorsBmp );
+//        al_destroy_bitmap( doorsBmp );
         doorsBmp = nullptr;
     }
 }
@@ -980,13 +981,13 @@ void WorldImpl::LoadLevel( int level )
 
     if ( wallsBmp != nullptr )
     {
-        al_destroy_bitmap( wallsBmp );
+//        al_destroy_bitmap( wallsBmp );
         wallsBmp = nullptr;
     }
 
     if ( doorsBmp != nullptr )
     {
-        al_destroy_bitmap( doorsBmp );
+//        al_destroy_bitmap( doorsBmp );
         doorsBmp = nullptr;
     }
 
@@ -1008,8 +1009,8 @@ void WorldImpl::LoadLevel( int level )
     else
     {
         LoadUnderworldContext();
-        wallsBmp = al_load_bitmap( directory.Extra2 );
-        doorsBmp = al_load_bitmap( directory.Extra3 );
+//        wallsBmp = al_load_bitmap( directory.Extra2 );
+//        doorsBmp = al_load_bitmap( directory.Extra3 );
         if ( level < 7 )
             curUWBlockFlags = profile.LevelFlags1;
         else
@@ -1258,7 +1259,7 @@ void WorldImpl::UseRecorder()
     {
         if ( IsPlaying() && state.play.roomType == PlayState::Regular )
         {
-            static const uint8_t roomIds[] = 
+            static const uint8_t roomIds[] =
             { 0x42, 0x06, 0x29, 0x2B, 0x30, 0x3A, 0x3C, 0x58, 0x60, 0x6E, 0x72 };
 
             bool makeWhirlwind = true;
@@ -1267,7 +1268,7 @@ void WorldImpl::UseRecorder()
             {
                 if ( roomIds[i] == curRoomId )
                 {
-                    if (   (i == 0 && profile.Quest == 0) 
+                    if (   (i == 0 && profile.Quest == 0)
                         || (i != 0 && profile.Quest != 0) )
                         makeWhirlwind = false;
                     break;
@@ -1289,10 +1290,10 @@ void WorldImpl::UseRecorder()
 void WorldImpl::SummonWhirlwind()
 {
     if ( !summonedWhirlwind
-        && whirlwindTeleporting == 0 
+        && whirlwindTeleporting == 0
         && IsOverworld()
         && IsPlaying()
-        && state.play.roomType == PlayState::Regular 
+        && state.play.roomType == PlayState::Regular
         && GetItem( ItemSlot_TriforcePieces ) != 0 )
     {
         int slot = FindEmptyMonsterSlot();
@@ -1311,8 +1312,8 @@ void WorldImpl::SummonWhirlwind()
 void WorldImpl::MakeFluteSecret()
 {
     // TODO:
-    // The original game makes a FluteSecret object (type $5E) and puts it in one of the first 9 
-    // object slots that it finds going from higher to lower slots. The FluteSecret object manages 
+    // The original game makes a FluteSecret object (type $5E) and puts it in one of the first 9
+    // object slots that it finds going from higher to lower slots. The FluteSecret object manages
     // the animation. See $EFA4, and the FluteSecret's update routine at $FEF4.
     // But, for now we'll keep doing it as we have been.
 
@@ -1566,7 +1567,7 @@ TileCollision World::CollidesWithTileMoving( int x, int y, Direction dir, bool i
     TileCollision collision = sWorld->CollidesWithTile( x, y, dir, offset );
 
     // Special tile collision in top right corner of OW. Go thru the wall.
-    if (   isPlayer 
+    if (   isPlayer
         && sWorld->infoBlock.LevelNumber == 0
         && sWorld->curRoomId == 0x1F
         && Util::IsVertical( dir )
@@ -1577,7 +1578,7 @@ TileCollision World::CollidesWithTileMoving( int x, int y, Direction dir, bool i
     return collision;
 }
 
-TileCollision WorldImpl::CollidesWithTile( 
+TileCollision WorldImpl::CollidesWithTile(
     int x, int y, Direction dir, int offset )
 {
     y += 0xB;
@@ -1863,7 +1864,7 @@ void WorldImpl::DrawMap( int roomId, int mapIndex, int offsetX, int offsetY )
     int innerPalette = roomAttrs[roomId].GetInnerPalette();
     TileMap*    map = &tileMaps[mapIndex];
 
-    if ( IsUWCellar( roomId ) 
+    if ( IsUWCellar( roomId )
         || IsPlayingCave() )
     {
         outerPalette = 3;
@@ -1904,11 +1905,11 @@ void WorldImpl::DrawMap( int roomId, int mapIndex, int offsetX, int offsetY )
 
     if ( IsUWMain( roomId ) )
     {
-        Graphics::DrawBitmap( 
-            wallsBmp, 
-            0, 0, 
-            TileMapWidth, TileMapHeight, 
-            offsetX, TileMapBaseY + offsetY, 
+        Graphics::DrawBitmap(
+            wallsBmp,
+            0, 0,
+            TileMapWidth, TileMapHeight,
+            offsetX, TileMapBaseY + offsetY,
             outerPalette, 0 );
     }
 
@@ -1934,11 +1935,11 @@ void WorldImpl::DrawMap( int roomId, int mapIndex, int offsetX, int offsetY )
             else
                 palette = innerPalette;
 
-            Graphics::DrawTile( 
-                Sheet_Background, 
-                srcX, srcY, 
-                TileWidth, TileHeight, 
-                x, y, 
+            Graphics::DrawTile(
+                Sheet_Background,
+                srcX, srcY,
+                TileWidth, TileHeight,
+                x, y,
                 palette, 0 );
         }
     }
@@ -2048,7 +2049,7 @@ void WorldImpl::AddItem( int itemId )
     unsigned int slot = equip.Slot;
     unsigned int value = equip.Value;
 
-    if (   itemId == Item_Heart 
+    if (   itemId == Item_Heart
         || itemId == Item_Fairy )
     {
         unsigned int heartValue = value << 8;
@@ -2761,7 +2762,7 @@ void WorldImpl::LoadLayout( int uniqueRoomId, int tileMapIndex, TileScheme tileS
     int         rowEnd = startRow + rowCount;
     bool        owLayoutFormat;
 
-    owLayoutFormat =   tileScheme == TileScheme::Overworld 
+    owLayoutFormat =   tileScheme == TileScheme::Overworld
                     || tileScheme == TileScheme::UnderworldCellar;
 
     switch ( tileScheme )
@@ -3002,7 +3003,7 @@ void WorldImpl::UpdatePlay()
 
         if ( submenu != 0 )
         {
-            if ( Input::IsButtonPressing( InputButtons::Select ) )
+            if (keyboard_check_pressed(*vk_space))
             {
                 submenu = 0;
                 submenuOffsetY = 0;
@@ -3017,13 +3018,13 @@ void WorldImpl::UpdatePlay()
 
         if ( pause == 0 )
         {
-            if ( Input::IsButtonPressing( InputButtons::Select ) )
+            if (keyboard_check_pressed(*vk_space))
             {
                 pause = 1;
                 Sound::Pause();
                 return;
             }
-            else if ( Input::IsButtonPressing( InputButtons::Start ) )
+            else if (keyboard_check_pressed(*vk_enter))
             {
                 submenu = 1;
                 return;
@@ -3031,7 +3032,7 @@ void WorldImpl::UpdatePlay()
         }
         else if ( pause == 1 )
         {
-            if ( Input::IsButtonPressing( InputButtons::Select ) )
+            if (keyboard_check_pressed(*vk_space))
             {
                 pause = 0;
                 Sound::Unpause();
@@ -3094,23 +3095,6 @@ void WorldImpl::UpdatePlay()
         CheckPowerTriforceFanfare();
         AdjustInventory();
         WarnLowHPIfNeeded();
-
-// TEST:
-#if 1
-        if ( Input::IsKeyPressing( ALLEGRO_KEY_H ) )
-        {
-            OpenShutters();
-        }
-
-        if ( Input::IsKeyPressing( ALLEGRO_KEY_EQUALS ) )
-        {
-            profile.Items[ItemSlot_RupeesToAdd] += 0x20;
-        }
-        else if ( Input::IsKeyPressing( ALLEGRO_KEY_MINUS ) )
-        {
-            profile.Items[ItemSlot_RupeesToSubtract] += 0x20;
-        }
-#endif
     }
 }
 
@@ -3133,7 +3117,7 @@ void WorldImpl::UpdateSubmenu()
     }
     else if ( submenu == 8 )
     {
-        if ( Input::IsButtonPressing( InputButtons::Start ) )
+        if (keyboard_check_pressed(*vk_enter))
         {
             menu.Deactivate();
             submenu++;
@@ -3170,7 +3154,7 @@ void WorldImpl::CheckShutters()
         {
             Direction dir = Util::GetOrdDirection( i );
 
-            if ( GetDoorType( dir ) == DoorType_Shutter 
+            if ( GetDoorType( dir ) == DoorType_Shutter
                 && !GetEffectiveDoorState( dir ) )
             {
                 dirs |= dir;
@@ -3330,7 +3314,7 @@ void WorldImpl::CheckBombables()
                 bool doorState = GetDoorState( curRoomId, doorDir );
                 if ( !doorState )
                 {
-                    if (   abs( bombX - doorMiddles[iDoor].X ) < UWBombRadius 
+                    if (   abs( bombX - doorMiddles[iDoor].X ) < UWBombRadius
                         && abs( bombY - doorMiddles[iDoor].Y ) < UWBombRadius )
                     {
                         triggeredDoorCmd = 6;
@@ -3385,7 +3369,7 @@ void WorldImpl::CheckSecrets()
     switch ( secret )
     {
     case Secret_Ringleader:
-        if (   objects[MonsterSlot1] == nullptr 
+        if (   objects[MonsterSlot1] == nullptr
             || objects[MonsterSlot1]->GetType() >= Obj_Person_End )
             KillAllObjects();
         break;
@@ -3425,8 +3409,8 @@ void WorldImpl::KillAllObjects()
     for ( int i = MonsterSlot1 + 1; i < MonsterSlotEnd; i++ )
     {
         Object* obj = objects[i];
-        if (   obj != nullptr 
-            && obj->GetType() < Obj_Person_End 
+        if (   obj != nullptr
+            && obj->GetType() < Obj_Person_End
             && obj->GetDecoration() == 0 )
         {
             obj->SetDecoration( 0x10 );
@@ -3449,8 +3433,8 @@ void WorldImpl::MoveRoomItem()
     ObjType type = foe->GetType();
 
     if ( item != nullptr
-        && (type == Obj_LikeLike 
-         || type == Obj_Stalfos 
+        && (type == Obj_LikeLike
+         || type == Obj_Stalfos
          || type == Obj_Gibdo) )
     {
         item->SetX( foe->GetX() );
@@ -3768,7 +3752,7 @@ void WorldImpl::DrawObjects( Object** objOverPlayer )
         if ( obj != nullptr && !obj->IsDeleted() )
         {
             if ( !obj->GetFlags().GetDrawAbovePlayer()
-                || objOverPlayer == nullptr 
+                || objOverPlayer == nullptr
                 || *objOverPlayer != nullptr )
                 obj->DecoratedDraw();
             else
@@ -3869,7 +3853,7 @@ void WorldImpl::MakeObjects( Direction entryDir )
             int type = list[slot];
             int x, y;
 
-            if ( edgeObjects 
+            if ( edgeObjects
                 && type != Obj_Zora
                 && type != Obj_Armos
                 && type != Obj_StandingFire
@@ -3964,7 +3948,7 @@ void WorldImpl::MakeUnderworldPerson( int objId )
     }
     else
     {
-        const LevelPersonStrings* stringIdTables = (LevelPersonStrings*) 
+        const LevelPersonStrings* stringIdTables = (LevelPersonStrings*)
             extraData.GetItem( Extra_LevelPersonStringIds );
 
         int levelIndex      = infoBlock.EffectiveLevelNumber - 1;
@@ -4085,7 +4069,7 @@ void WorldImpl::PutEdgeObject()
     edgeX = x;
     edgeY = y;
 
-    if (   abs( player->GetX() - x ) >= 0x22 
+    if (   abs( player->GetX() - x ) >= 0x22
         || abs( player->GetY() - y ) >= 0x22 )
     {
         Object* obj = MakeMonster( (ObjType) placeholderTypes[curObjSlot], x, y - 3 );
@@ -4125,10 +4109,10 @@ void WorldImpl::TryDroppingItem( int origType, int x, int y )
 {
     static const uint8_t classBases[] = { 0, 10, 20, 30 };
     static const uint8_t classRates[] = { 0x50, 0x98, 0x68, 0x68 };
-    static const uint8_t dropItems[] = 
+    static const uint8_t dropItems[] =
     {
-        0x22, 0x18, 0x22, 0x18, 0x23, 0x18, 0x22, 0x22, 0x18, 0x18, 0x0F, 0x18, 0x22, 0x18, 0x0F, 0x22, 
-        0x21, 0x18, 0x18, 0x18, 0x22, 0x00, 0x18, 0x21, 0x18, 0x22, 0x00, 0x18, 0x00, 0x22, 0x22, 0x22, 
+        0x22, 0x18, 0x22, 0x18, 0x23, 0x18, 0x22, 0x22, 0x18, 0x18, 0x0F, 0x18, 0x22, 0x18, 0x0F, 0x22,
+        0x21, 0x18, 0x18, 0x18, 0x22, 0x00, 0x18, 0x21, 0x18, 0x22, 0x00, 0x18, 0x00, 0x22, 0x22, 0x22,
         0x23, 0x18, 0x22, 0x23, 0x22, 0x22, 0x22, 0x18
     };
 
@@ -4212,7 +4196,7 @@ bool WorldImpl::CalcMazeStayPut( Direction dir )
         return false;
 
     bool stayPut = false;
-    const SparseMaze* maze 
+    const SparseMaze* maze
         = (SparseMaze*) Util::FindSparseAttr( sparseRoomAttrs, Sparse_Maze, curRoomId );
     if ( maze != nullptr )
     {
@@ -4319,7 +4303,7 @@ void WorldImpl::UpdateScroll_FadeOut()
 
 void WorldImpl::UpdateScroll_LoadRoom()
 {
-    if ( state.scroll.scrollDir == Dir_Down 
+    if ( state.scroll.scrollDir == Dir_Down
         && !IsOverworld()
         && curRoomId == infoBlock.StartRoomId )
     {
@@ -4433,7 +4417,7 @@ void WorldImpl::DrawScroll()
     Graphics::SetClip( 0, TileMapBaseY, TileMapWidth, TileMapHeight );
     ClearScreen();
 
-    if ( state.scroll.substate == ScrollState::Scroll 
+    if ( state.scroll.substate == ScrollState::Scroll
         || state.scroll.substate == ScrollState::FadeOut )
     {
         int oldMapOffsetX = state.scroll.offsetX + state.scroll.oldMapToNewMapDistX;
@@ -4595,10 +4579,10 @@ void WorldImpl::UpdateEnter_Start()
 
         state.enter.targetX = player->GetX();
         state.enter.targetY = player->GetY();
-        Util::MoveSimple( 
-            state.enter.targetX, 
-            state.enter.targetY, 
-            state.enter.scrollDir, 
+        Util::MoveSimple(
+            state.enter.targetX,
+            state.enter.targetY,
+            state.enter.scrollDir,
             distance );
 
         if ( !uwRoomAttrs.IsDark() && darkRoomFadeStep > 0 )
@@ -4660,7 +4644,7 @@ void WorldImpl::UpdateEnter_FadeIn()
 
 void WorldImpl::UpdateEnter_Walk()
 {
-    if (   player->GetX() == state.enter.targetX 
+    if (   player->GetX() == state.enter.targetX
         && player->GetY() == state.enter.targetY )
         state.enter.gotoPlay = true;
     else
@@ -4669,7 +4653,7 @@ void WorldImpl::UpdateEnter_Walk()
 
 void WorldImpl::UpdateEnter_WalkCave()
 {
-    if (   player->GetX() == state.enter.targetX 
+    if (   player->GetX() == state.enter.targetX
         && player->GetY() == state.enter.targetY )
         state.enter.gotoPlay = true;
     else
@@ -5078,8 +5062,8 @@ void WorldImpl::UpdateWinGame_Hold2()
     {
         // AB07
         const static uint8_t str2[] = {
-    0x25, 0x25, 0x25, 0x25, 0x25, 0x25, 0x25, 0x25, 
-    0x0f, 0x12, 0x17, 0x0a, 0x15, 0x15, 0x22, 0x28, 
+    0x25, 0x25, 0x25, 0x25, 0x25, 0x25, 0x25, 0x25,
+    0x0f, 0x12, 0x17, 0x0a, 0x15, 0x15, 0x22, 0x28,
     0xa5, 0x65,
     0x19, 0x0e, 0x0a, 0x0c, 0x0e, 0x24, 0x1b, 0x0e,
     0x1d, 0x1e, 0x1b, 0x17, 0x1c, 0x24, 0x1d, 0x18, 0x24, 0x11, 0x22, 0x1b, 0x1e, 0x15, 0x0e, 0x2c,
@@ -5149,7 +5133,7 @@ void WorldImpl::UpdateWinGame_Credits()
     credits->Update();
     if ( credits->IsDone() )
     {
-        if ( Input::IsButtonPressing( InputButtons::Start ) )
+        if (keyboard_check_pressed(*vk_enter))
         {
             delete credits;
             credits = nullptr;
@@ -5190,7 +5174,7 @@ void WorldImpl::UpdateWinGame_Credits()
 
 void WorldImpl::DrawWinGame()
 {
-    ALLEGRO_COLOR backColor;
+    //ALLEGRO_COLOR backColor;
 
     Graphics::SetClip( 0, 0, StdViewWidth, StdViewHeight );
     if ( state.winGame.substate == WinGameState::Colors )
@@ -5199,16 +5183,16 @@ void WorldImpl::DrawWinGame()
         int frame = state.winGame.timer & 3;
         int sysColor = sysColors[frame];
         ClearScreen( sysColor );
-        backColor = Graphics::GetSystemColor( sysColor );
+        //backColor = Graphics::GetSystemColor( sysColor );
     }
     else
     {
         ClearScreen();
-        backColor = al_map_rgb( 0, 0, 0 );
+        //backColor = al_map_rgb( 0, 0, 0 );
     }
     Graphics::ResetClip();
 
-    statusBar.Draw( submenuOffsetY, backColor );
+    //statusBar.Draw( submenuOffsetY, backColor );
 
     if ( state.winGame.substate == WinGameState::Start )
     {
@@ -5299,7 +5283,7 @@ void WorldImpl::UpdateStairsState()
     }
     else if ( state.stairs.substate == StairsState::WalkCave )
     {
-        if (  player->GetX() == state.stairs.targetX 
+        if (  player->GetX() == state.stairs.targetX
            && player->GetY() == state.stairs.targetY )
         {
             OWRoomAttrs& owRoomAttrs = (OWRoomAttrs&) roomAttrs[curRoomId];
@@ -5569,7 +5553,7 @@ void WorldImpl::DrawLeaveCellar()
 
     if ( state.leaveCellar.substate == LeaveCellarState::Start )
         ;
-    else if ( state.leaveCellar.substate == LeaveCellarState::Wait 
+    else if ( state.leaveCellar.substate == LeaveCellarState::Wait
         || state.leaveCellar.substate == LeaveCellarState::LoadOverworldRoom )
         ClearScreen();
     else
@@ -5649,7 +5633,7 @@ void WorldImpl::DrawPlayCave()
 {
     Graphics::SetClip( 0, TileMapBaseY, TileMapWidth, TileMapHeight );
 
-    if ( state.playCave.substate == PlayCaveState::Wait 
+    if ( state.playCave.substate == PlayCaveState::Wait
         || state.playCave.substate == PlayCaveState::LoadRoom )
     {
         ClearScreen();
@@ -5705,7 +5689,7 @@ void WorldImpl::UpdateDie_Wait1()
 
     if ( state.death.timer == 0 )
     {
-        static const uint8_t redPals[2][4] = 
+        static const uint8_t redPals[2][4] =
         {
             { 0x0F, 0x17, 0x16, 0x26 },
             { 0x0F, 0x17, 0x16, 0x26 }
@@ -5734,7 +5718,7 @@ void WorldImpl::UpdateDie_Turn()
             state.death.timer = 5;
             state.death.step--;
 
-            static const Direction dirs[] = 
+            static const Direction dirs[] =
             {
                 Dir_Down,
                 Dir_Left,
@@ -5862,13 +5846,13 @@ void WorldImpl::UpdateContinueQuestion()
     }
     else if ( state.continueQuestion.substate == ContinueState::Idle )
     {
-        if ( Input::IsButtonPressing( InputButtons::Select ) )
+        if (keyboard_check_pressed(*vk_space))
         {
             state.continueQuestion.selectedIndex++;
             if ( state.continueQuestion.selectedIndex == 3 )
                 state.continueQuestion.selectedIndex = 0;
         }
-        else if ( Input::IsButtonPressing( InputButtons::Start ) )
+        else if (keyboard_check_pressed(*vk_enter))
         {
             state.continueQuestion.substate = ContinueState::Chosen;
             state.continueQuestion.timer = 0x40;
@@ -5921,7 +5905,7 @@ void WorldImpl::DrawContinueQuestion()
     for ( int i = 0; i < 3; i++, y += 24 )
     {
         int pal = 0;
-        if ( state.continueQuestion.substate == ContinueState::Chosen 
+        if ( state.continueQuestion.substate == ContinueState::Chosen
             && state.continueQuestion.selectedIndex == i )
             pal = (GetFrameCounter() / 4) & 1;
 

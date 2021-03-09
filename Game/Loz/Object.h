@@ -7,6 +7,8 @@
 
 #pragma once
 
+#include "ObjType.h"
+#include "World.h"
 
 enum CollisionResponse;
 enum ObjType;
@@ -174,10 +176,10 @@ protected:
     Direction CheckWorldMargin( Direction dir );
     void TurnToUnblockedDir();
     Direction GetSingleMoving();
-    static bool DoObjectsCollide( 
-        Point obj1, 
-        Point obj2, 
-        Point box, 
+    static bool DoObjectsCollide(
+        Point obj1,
+        Point obj2,
+        Point box,
         Point& distance );
     void Shove( CollisionContext& context );
     void PlayBossHitSoundIfHit();
@@ -187,10 +189,10 @@ private:
     Direction CheckWorldBounds( Direction dir );
 
     Point CalcObjMiddle();
-    bool CheckCollisionNoShove( 
+    bool CheckCollisionNoShove(
         CollisionContext& context,
         Point box );
-    bool CheckCollisionCustomNoShove( 
+    bool CheckCollisionCustomNoShove(
         CollisionContext& context,
         Point box,
         Point weaponOffset );

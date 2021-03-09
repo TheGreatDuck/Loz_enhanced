@@ -46,31 +46,31 @@ public:
 
     static void Begin();
     static void End();
-    static void DrawSpriteTile( 
-        int slot, 
-        int srcX, 
-        int srcY, 
-        int width, 
-        int height, 
-        int destX, 
-        int destY, 
+    static void DrawSpriteTile(
+        int slot,
+        int srcX,
+        int srcY,
+        int width,
+        int height,
+        int destX,
+        int destY,
         int palette,
         int flags
         );
-    static void DrawTile( 
-        int slot, 
-        int srcX, 
-        int srcY, 
-        int width, 
-        int height, 
-        int destX, 
-        int destY, 
+    static void DrawTile(
+        int slot,
+        int srcX,
+        int srcY,
+        int width,
+        int height,
+        int destX,
+        int destY,
         int palette,
         int flags
         );
     static void DrawBitmap(
-        ALLEGRO_BITMAP* bitmap,
-        int srcX, 
+        void* bitmap,
+        int srcX,
         int srcY,
         int width,
         int height,
@@ -88,7 +88,7 @@ public:
         );
 
     static void LoadSystemPalette( const int* colorsArgb8 );
-    static ALLEGRO_COLOR GetSystemColor( int sysColor );
+    //static ALLEGRO_COLOR GetSystemColor( int sysColor );
     static void SetColor( int paletteIndex, int colorIndex, int colorArgb8 );
     static void SetColorIndexed( int paletteIndex, int colorIndex, int sysColor );
     static void SetPaletteIndexed( int paletteIndex, const uint8_t* sysColors );

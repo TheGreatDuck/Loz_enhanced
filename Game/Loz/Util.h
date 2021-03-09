@@ -100,8 +100,8 @@ namespace Util
 
         virtual bool Load( FILE* file, size_t fileSize ) override
         {
-            assert( file != nullptr );
-            assert( sizeof( T ) * Length <= fileSize );
+            //assert( file != nullptr );
+            //assert( sizeof( T ) * Length <= fileSize );
 
             fread( blob, sizeof( T ), Length, file );
 
@@ -111,7 +111,7 @@ namespace Util
 
 
     template <typename T>
-    bool LoadList( const char* filename, T* list, size_t length )
+    bool LoadList( const char* filename, T* elements, size_t length )
     {
         FILE* file = nullptr;
 
@@ -119,7 +119,7 @@ namespace Util
         if ( err != 0 )
             return false;
 
-        fread( list, sizeof T, length, file );
+        fread( elements, sizeof(T), length, file );
         fclose( file );
 
         return true;
@@ -146,7 +146,7 @@ namespace Util
 
         virtual bool Load( FILE* file, size_t fileSize ) override
         {
-            assert( file != nullptr );
+            //assert( file != nullptr );
             Free();
 
             uint16_t len16;
@@ -208,7 +208,7 @@ namespace Util
 
         virtual bool Load( FILE* file, size_t fileSize ) override
         {
-            assert( file != nullptr );
+            //assert( file != nullptr );
             Free();
 
             uint16_t len16;
@@ -230,7 +230,7 @@ namespace Util
 
         const T* GetItem( size_t index )
         {
-            assert( index < length );
+            //assert( index < length );
             if ( index >= length )
                 return nullptr;
 
@@ -274,8 +274,8 @@ namespace Util
 
         virtual bool Load( FILE* file, size_t fileSize ) override
         {
-            assert( file != nullptr );
-            assert( buffer == nullptr );
+            //assert( file != nullptr );
+            //assert( buffer == nullptr );
 
             uint16_t    len16;
             int         size = fileSize - sizeof len16;
@@ -297,7 +297,7 @@ namespace Util
                 return nullptr;
 
             uint8_t* itemBase = GetItemBase( index );
-            assert( *itemBase == 0 );
+            //assert( *itemBase == 0 );
             return (T*) &itemBase[1];
         }
 
@@ -308,7 +308,7 @@ namespace Util
 
             int offset = 2;
             uint8_t* itemBase = GetItemBase( index );
-            assert( *itemBase == 1 );
+            //assert( *itemBase == 1 );
             offset += i0 * itemBase[1];
             return (T*) &itemBase[offset];
         }
@@ -320,7 +320,7 @@ namespace Util
 
             int offset = 3;
             uint8_t* itemBase = GetItemBase( index );
-            assert( *itemBase == 2 );
+            //assert( *itemBase == 2 );
             offset += i0 * itemBase[1];
             offset += i1 * itemBase[2];
             return (T*) &itemBase[offset];

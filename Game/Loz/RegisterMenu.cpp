@@ -5,6 +5,7 @@
    See the LICENSE text file for details.
 */
 
+#include "gameMakerLibrary.hpp"
 #include "Common.h"
 #include "RegisterMenu.h"
 #include "Graphics.h"
@@ -17,42 +18,42 @@
 #include "World.h"
 
 
-const static uint8_t RegisterStr[] = 
+const static uint8_t RegisterStr[] =
 {
     0x6A, 0x6A, 0x6A, 0x6A,
-    0x1B, 0x0E, 0x10, 0x12, 0x1C, 0x1D, 0x0E, 0x1B, 0x24, 0x22, 0x18, 0x1E, 0x1B, 0x24, 0x17, 0x0A, 
+    0x1B, 0x0E, 0x10, 0x12, 0x1C, 0x1D, 0x0E, 0x1B, 0x24, 0x22, 0x18, 0x1E, 0x1B, 0x24, 0x17, 0x0A,
     0x16, 0x0E,
     0x6A, 0x6A, 0x6A,
 };
 
-const static uint8_t RegisterEndStr[] = 
+const static uint8_t RegisterEndStr[] =
 { 0x1B, 0x0E, 0x10, 0x12, 0x1C, 0x1D, 0x0E, 0x1B, 0x24, 0x24, 0x24, 0x24, 0x0E, 0x17, 0x0D };
 
-const static uint8_t CharSetStrBlank[] = 
+const static uint8_t CharSetStrBlank[] =
 {
-    0x60, 0x60, 0x60, 0x60, 0x60, 0x60, 0x60, 0x60, 0x60, 0x60, 0x60, 0x60, 0x60, 0x60, 0x60, 0x60, 
+    0x60, 0x60, 0x60, 0x60, 0x60, 0x60, 0x60, 0x60, 0x60, 0x60, 0x60, 0x60, 0x60, 0x60, 0x60, 0x60,
     0x60, 0x60, 0x60, 0x60, 0x60
 };
 
-const static uint8_t CharSetStr0[] = 
+const static uint8_t CharSetStr0[] =
 {
-    0x0A, 0x60, 0x0B, 0x60, 0x0C, 0x60, 0x0D, 0x60, 0x0E, 0x60, 0x0F, 0x60, 0x10, 0x60, 0x11, 0x60, 
+    0x0A, 0x60, 0x0B, 0x60, 0x0C, 0x60, 0x0D, 0x60, 0x0E, 0x60, 0x0F, 0x60, 0x10, 0x60, 0x11, 0x60,
     0x12, 0x60, 0x13, 0x60, 0x14
 };
 
-const static uint8_t CharSetStr1[] = 
+const static uint8_t CharSetStr1[] =
 {
     0x15, 0x60, 0x16, 0x60, 0x17, 0x60, 0x18, 0x60, 0x19, 0x60, 0x1A, 0x60, 0x1B, 0x60, 0x1C, 0x60,
     0x1D, 0x60, 0x1E, 0x60, 0x1F
 };
 
-const static uint8_t CharSetStr2[] = 
+const static uint8_t CharSetStr2[] =
 {
     0x20, 0x60, 0x21, 0x60, 0x22, 0x60, 0x23, 0x60, 0x62, 0x60, 0x63, 0x60, 0x28, 0x60, 0x29, 0x60,
     0x2A, 0x60, 0x2B, 0x60, 0x2C
 };
 
-const static uint8_t CharSetStr3[] = 
+const static uint8_t CharSetStr3[] =
 {
     0x00, 0x60, 0x01, 0x60, 0x02, 0x60, 0x03, 0x60, 0x04, 0x60, 0x05, 0x60, 0x06, 0x60, 0x07, 0x60,
     0x08, 0x60, 0x09, 0x60, 0x24
@@ -180,7 +181,7 @@ void RegisterMenu::CommitFiles()
             ProfileSummary& summary = summaries->Summaries[i];
             Profile profile = { 0 };
 
-            if ( (summary.NameLength == _countof( Quest2Name )) 
+            if ( (summary.NameLength == _countof( Quest2Name ))
                 && memcmp( summary.Name, Quest2Name, summary.NameLength ) == 0 )
             {
                 summary.Quest = 1;
@@ -199,13 +200,13 @@ void RegisterMenu::CommitFiles()
 
 void RegisterMenu::Update()
 {
-    if ( Input::IsButtonPressing( InputButtons::Select ) )
+    if (keyboard_check_pressed(*vk_space))
     {
         SelectNext();
         namePos = 0;
         Sound::PlayEffect( SEffect_cursor );
     }
-    else if ( Input::IsButtonPressing( InputButtons::Start ) )
+    else if (keyboard_check_pressed(*vk_enter))
     {
         if ( selectedIndex == 3 )
         {
@@ -213,7 +214,7 @@ void RegisterMenu::Update()
             World::ChooseFile( summaries );
         }
     }
-    else if ( Input::IsButtonPressing( InputButtons::A ) )
+    else if (keyboard_check_pressed(*vk_control))
     {
         if ( selectedIndex < 3 )
         {
@@ -221,27 +222,27 @@ void RegisterMenu::Update()
             Sound::PlayEffect( SEffect_put_bomb );
         }
     }
-    else if ( Input::IsButtonPressing( InputButtons::B ) )
+    else if (keyboard_check_pressed(*vk_shift))
     {
         if ( selectedIndex < 3 )
             MoveNextNamePosition();
     }
-    else if ( Input::IsButtonPressing( InputButtons::Right ) )
+    else if (keyboard_check_pressed(*vk_right))
     {
         MoveCharSetCursorH( 1 );
         Sound::PlayEffect( SEffect_cursor );
     }
-    else if ( Input::IsButtonPressing( InputButtons::Left ) )
+    else if (keyboard_check_pressed(*vk_left))
     {
         MoveCharSetCursorH( -1 );
         Sound::PlayEffect( SEffect_cursor );
     }
-    else if ( Input::IsButtonPressing( InputButtons::Down ) )
+    else if (keyboard_check_pressed(*vk_down))
     {
         MoveCharSetCursorV( 1 );
         Sound::PlayEffect( SEffect_cursor );
     }
-    else if ( Input::IsButtonPressing( InputButtons::Up ) )
+    else if (keyboard_check_pressed(*vk_up))
     {
         MoveCharSetCursorV( -1 );
         Sound::PlayEffect( SEffect_cursor );
@@ -252,7 +253,7 @@ void RegisterMenu::Draw()
 {
     Graphics::Begin();
 
-    al_clear_to_color( al_map_rgb( 0, 0, 0 ) );
+    //al_clear_to_color( al_map_rgb( 0, 0, 0 ) );
 
     int x, y;
 

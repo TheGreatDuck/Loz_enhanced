@@ -1,0 +1,13 @@
+void d3d_transform_set_identity();
+void d3d_transform_set_translation(double x, double y, double z);
+void d3d_transform_set_scaling(double xs, double ys, double zs);
+void d3d_transform_set_rotation_x(double direction);
+void d3d_transform_set_rotation_y(double direction);
+void d3d_transform_set_rotation_z(double direction);
+void d3d_transform_set_rotation_axis(double xa, double ya, double za, double angle);
+void d3d_transform_add_translation(double x, double y, double z);
+void d3d_transform_add_scaling(double xs, double ys, double zs);
+void d3d_transform_add_rotation_x(double direction);
+void d3d_transform_add_rotation_y(double direction);
+void d3d_transform_add_rotation_z(double direction);
+void d3d_transform_add_rotation_axis(double xa, double ya, double za, double angle);

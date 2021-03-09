@@ -5,6 +5,7 @@
    See the LICENSE text file for details.
 */
 
+#include "gameMakerLibrary.hpp"
 #include "Common.h"
 #include "Submenu.h"
 #include "Graphics.h"
@@ -51,7 +52,7 @@ struct TileInst
     uint8_t Palette;
 };
 
-static const uint8_t equippedUISlots[] = 
+static const uint8_t equippedUISlots[] =
 {
     0,          // Sword
     1,          // Bombs
@@ -83,7 +84,7 @@ static const uint8_t equippedUISlots[] =
     0,          // Boomerang
 };
 
-static const TileInst uiTiles[] = 
+static const TileInst uiTiles[] =
 {
     // INVENTORY
     { 0x12, 0x20, 0x10, 1 },
@@ -180,7 +181,7 @@ static const TileInst uiTiles[] =
     { 0x6D, 0xD8, 0x48, 0 },
 };
 
-static const PassiveItemSpec passiveItems[] = 
+static const PassiveItemSpec passiveItems[] =
 {
     { ItemSlot_Raft,     PassiveItemX },
     { ItemSlot_Book,     PassiveItemX + 0x18 },
@@ -200,7 +201,7 @@ Submenu::Submenu()
 
 static int GetItemIdForUISlot( int uiSlot, int& itemSlot )
 {
-    static int slots[Submenu::ActiveItems] = 
+    static int slots[Submenu::ActiveItems] =
     {
         ItemSlot_Boomerang,
         ItemSlot_Bombs,
@@ -219,7 +220,7 @@ static int GetItemIdForUISlot( int uiSlot, int& itemSlot )
 
     if ( itemSlot == ItemSlot_Arrow )
     {
-        if (   profile.Items[ItemSlot_Arrow] != 0 
+        if (   profile.Items[ItemSlot_Arrow] != 0
             && profile.Items[ItemSlot_Bow] != 0 )
         {
             int arrowId = ItemValueToItemId( ItemSlot_Arrow );
@@ -283,9 +284,9 @@ void Submenu::Update()
 
     int dir = 0;
 
-    if ( Input::IsButtonPressing( InputButtons::Left ) )
+    if (keyboard_check_pressed(*vk_left))
         dir = -1;
-    else if ( Input::IsButtonPressing( InputButtons::Right ) )
+    else if (keyboard_check_pressed(*vk_right))
         dir = 1;
     else
         return;
@@ -334,7 +335,7 @@ void Submenu::Draw( int bottom )
 
 void Submenu::DrawBackground( int top )
 {
-    al_clear_to_color( al_map_rgb( 0, 0, 0 ) );
+    //al_clear_to_color( al_map_rgb( 0, 0, 0 ) );
 
     for ( int i = 0; i < _countof( uiTiles ); i++ )
     {
@@ -426,7 +427,7 @@ void Submenu::DrawTriforce( int top )
 {
     static const uint8_t Triforce[] = { 0x1D, 0x1B, 0x12, 0x0F, 0x18, 0x1B, 0x0C, 0x0E };
 
-    static const TriforcePieceSpec pieceSpecs[] = 
+    static const TriforcePieceSpec pieceSpecs[] =
     {
         { 0x70, 0x70, { { 0xED, 0xE9 }, { 0xE9, 0x24 } }, { { 0xED, 0xE7 }, { 0xE7, 0xF5 } } },
         { 0x80, 0x70, { { 0xEA, 0xEE }, { 0x24, 0xEA } }, { { 0xE8, 0xEE }, { 0xF5, 0xE8 } } },
@@ -505,9 +506,9 @@ void Submenu::DrawMap( int top )
 {
     static const uint8_t Map[] = { 0x16, 0x0A, 0x19 };
     static const uint8_t Compass[] = { 0x0C, 0x18, 0x16, 0x19, 0x0A, 0x1C, 0x1C };
-    static const uint8_t TopMapLine[] = 
+    static const uint8_t TopMapLine[] =
     { 0xF5, 0xF5, 0xFD, 0xF5, 0xF5, 0xFD, 0xF5, 0xF5, 0xFD, 0xF5, 0xF5, 0xF5, 0xFD, 0xF5, 0xF5, 0xF5 };
-    static const uint8_t BottomMapLine[] = 
+    static const uint8_t BottomMapLine[] =
     { 0xF5, 0xFE, 0xF5, 0xF5, 0xF5, 0xFE, 0xF5, 0xF5, 0xF5, 0xF5, 0xFE, 0xF5, 0xF5, 0xF5, 0xFE, 0xF5 };
 
     DrawString( Map, _countof( Map ), 0x28, 0x58 + top, 1 );
@@ -555,8 +556,8 @@ void Submenu::DrawMap( int top )
                     if ( doorType == DoorType_Open )
                         doorSum |= doorBit;
                     else if ( roomFlags.GetDoorState( doorBit )
-                        && (doorType == DoorType_Bombable 
-                        ||  doorType == DoorType_Key 
+                        && (doorType == DoorType_Bombable
+                        ||  doorType == DoorType_Key
                         ||  doorType == DoorType_Key2) )
                         doorSum |= doorBit;
                 }

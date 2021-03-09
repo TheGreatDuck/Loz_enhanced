@@ -12,7 +12,14 @@
 #include "Submenu.h"
 #include "TileBehavior.h"
 
-// TODO: Work around a compiler bug by including this file to define ObjectAttrs before 
+enum CollisionResponse
+{
+    Collision_Unknown,
+    Collision_Free,
+    Collision_Blocked
+};
+
+// TODO: Work around a compiler bug by including this file to define ObjectAttrs before
 //       WorldImpl::GetObjectAttrs. The problem shows up, because I changed GetObjectAttrs
 //       from a instance method to a static method.
 #include "Object.h"
@@ -54,13 +61,6 @@ enum
     Tile_Headstone  = 0xBC,
     Tile_Block      = 0xB0,
     Tile_WallEdge   = 0xF6,
-};
-
-enum CollisionResponse
-{
-    Collision_Unknown,
-    Collision_Free,
-    Collision_Blocked
 };
 
 enum ObjSlot

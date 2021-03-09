@@ -137,4 +137,4 @@ enum
 
 
 uint32_t GetFrameCounter();
-ALLEGRO_CONFIG* GetConfig();
+//ALLEGRO_CONFIG* GetConfig();

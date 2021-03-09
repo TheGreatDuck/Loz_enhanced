@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="CallDelayedFunctionsDLL" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="../Build Files/CallDelayedFunctions" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="../Build Files/" />
+				<Option object_output="obj/Release/" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-fexpensive-optimizations" />
+					<Add option="-Os" />
+					<Add option="-Wshadow" />
+					<Add option="-Winit-self" />
+					<Add option="-Wredundant-decls" />
+					<Add option="-Wcast-align" />
+					<Add option="-Wundef" />
+					<Add option="-Wfloat-equal" />
+					<Add option="-Winline" />
+					<Add option="-Wunreachable-code" />
+					<Add option="-Wmissing-declarations" />
+					<Add option="-Wmissing-include-dirs" />
+					<Add option="-Wswitch-enum" />
+					<Add option="-Wswitch-default" />
+					<Add option="-Weffc++" />
+					<Add option="-Wmain" />
+					<Add option="-pedantic" />
+					<Add option="-Wextra" />
+					<Add option="-Wall" />
+					<Add option="-pg" />
+					<Add option="-m32" />
+					<Add option="-std=c++0x" />
+				</Compiler>
+				<Linker>
+					<Add option="-pg -lgmon" />
+					<Add option="-static-libstdc++" />
+					<Add option="-static-libgcc" />
+					<Add option="-static" />
+					<Add option="-m32" />
+					<Add option="-lpthread" />
+					<Add library="user32" />
+				</Linker>
+				<ExtraCommands>
+					<Add before="WrapperGenerator.exe" />
+				</ExtraCommands>
+			</Target>
+			<Target title="Wrapper Generator">
+				<Option output="WrapperGenerator" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-fexpensive-optimizations" />
+					<Add option="-Os" />
+					<Add option="-Wshadow" />
+					<Add option="-Winit-self" />
+					<Add option="-Wredundant-decls" />
+					<Add option="-Wcast-align" />
+					<Add option="-Wundef" />
+					<Add option="-Wfloat-equal" />
+					<Add option="-Winline" />
+					<Add option="-Wunreachable-code" />
+					<Add option="-Wmissing-declarations" />
+					<Add option="-Wmissing-include-dirs" />
+					<Add option="-Wswitch-enum" />
+					<Add option="-Wswitch-default" />
+					<Add option="-Weffc++" />
+					<Add option="-Wmain" />
+					<Add option="-pedantic" />
+					<Add option="-Wextra" />
+					<Add option="-Wall" />
+					<Add option="-pg" />
+					<Add option="-m32" />
+					<Add option="-std=c++0x" />
+				</Compiler>
+				<Linker>
+					<Add option="-pg -lgmon" />
+					<Add option="-static-libstdc++" />
+					<Add option="-static-libgcc" />
+					<Add option="-static" />
+					<Add option="-m32" />
+					<Add option="-lpthread" />
+					<Add library="user32" />
+				</Linker>
+			</Target>
+		</Build>
+		<Unit filename="Common.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="Common.h">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="Credits.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="Credits.h">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="EliminateMenu.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="EliminateMenu.h">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="GameMenu.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="GameMenu.h">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="Global.h">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="Graphics.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="Graphics.h">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="Input.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="Input.h">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="ItemObj.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="ItemObj.h">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="Loz.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="Menu.h">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="Monsters.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="Monsters.h">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="OWNpcsAnim.h">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="ObjType.h">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="Object.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="Object.h">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="Player.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="Player.h">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="PlayerItemsAnim.h">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="Profile.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="Profile.h">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="RcId.h">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="RegisterMenu.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="RegisterMenu.h">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="RoomAttrs.h">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="SaveFolder.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="SaveFolder.h">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="Sound.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="Sound.h">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="SoundId.h">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="SpriteAnimator.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="SpriteAnimator.h">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="StatusBar.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="StatusBar.h">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="Submenu.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="Submenu.h">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="TextBox.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="TextBox.h">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="TileAttr.h">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="TileBehavior.h">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="UWBossAnim.h">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="UWNpcsAnim.h">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="Util.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="Util.h">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="World.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="World.h">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="WorldImpl.h">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="delayed_function_calls.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="delayed_function_calls.hpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="dynamicWrapperGeneration.cpp">
+			<Option target="Wrapper Generator" />
+		</Unit>
+		<Unit filename="gameLoop.hpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="gameMakerFunctions/3DGraphics/d3d_model.hpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="gameMakerFunctions/3DGraphics/d3d_primitive.hpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="gameMakerFunctions/3DGraphics/d3d_shape.hpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="gameMakerFunctions/3DGraphics/d3d_transform.hpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="gameMakerFunctions/builtInVariables.hpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="gameMakerFunctions/customFunctions.hpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="gameMakerFunctions/gameGraphics/drawingShapes.hpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="gameMakerFunctions/gameGraphics/fontsAndText.hpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="gameMakerFunctions/gameGraphics/theDisplay.hpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="gameMakerFunctions/gameGraphics/theWindow.hpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="gameMakerFunctions/gamePlay/rooms.hpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="gameMakerFunctions/userInteraction/joystick.hpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="gameMakerFunctions/userInteraction/keyboard.hpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="gameMakerFunctions/userInteraction/mouse.hpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="gameMakerLibrary.hpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="variableWrapper.hpp">
+			<Option target="Release" />
+		</Unit>
+		<Extensions>
+			<DoxyBlocks>
+				<comment_style block="0" line="0" />
+				<doxyfile_project />
+				<doxyfile_build extract_all="1" extract_private="1" extract_static="1" />
+				<doxyfile_warnings warn_if_undocumented="1" />
+				<doxyfile_output />
+				<doxyfile_dot />
+				<general />
+			</DoxyBlocks>
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

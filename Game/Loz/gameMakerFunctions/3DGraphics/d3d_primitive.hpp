@@ -1,0 +1,10 @@
+void d3d_primitive_begin(double kind);
+void d3d_vertex(double x, double y, double z);
+void d3d_vertex_color(double x, double y, double z, double col, double alpha);
+void d3d_primitive_end();
+void d3d_primitive_begin_texture(double kind, double texid);
+void d3d_vertex_texture(double x, double y, double z, double xtex, double ytex);
+void d3d_vertex_texture_color(double x,double y,double z,double xtex,double ytex,double col,double alpha);
+void d3d_vertex_normal_color(double x,double y,double z,double nx,double ny,double nz,double col,double alpha);
+void d3d_vertex_normal_texture(double x,double y,double z,double nx,double ny,double nz,double xtex,double ytex);
+void d3d_vertex_normal_texture_color(double x,double y,double z,double nx,double ny,double nz,double xtex,double ytex,double col,double alpha);

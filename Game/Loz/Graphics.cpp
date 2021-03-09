@@ -44,12 +44,12 @@ int             savedClipHeight;
 Util::Table<SpriteAnim> animSpecs[Sheet_Max];
 
 
-static bool ChooseShaderSource( 
-    ALLEGRO_SHADER* shader, 
-    const char** vsource, 
+static bool ChooseShaderSource(
+    ALLEGRO_SHADER* shader,
+    const char** vsource,
     const char** psource )
 {
-    ALLEGRO_SHADER_PLATFORM platform = al_get_shader_platform( shader );
+    /*ALLEGRO_SHADER_PLATFORM platform = al_get_shader_platform( shader );
     if ( platform == ALLEGRO_SHADER_HLSL )
     {
         *vsource = "tileShaderVertex.hlsl";
@@ -65,14 +65,14 @@ static bool ChooseShaderSource(
         *vsource = nullptr;
         *psource = nullptr;
         return false;
-    }
+    }*/
 
    return true;
 }
 
 static bool AllocatePaletteBuffer()
 {
-    int format = al_get_bitmap_format( paletteBmp );
+    /*int format = al_get_bitmap_format( paletteBmp );
     ALLEGRO_LOCKED_REGION*  region = al_lock_bitmap( paletteBmp, format, ALLEGRO_LOCK_WRITEONLY );
     if ( region == nullptr )
         return false;
@@ -89,13 +89,13 @@ static bool AllocatePaletteBuffer()
     if ( paletteBuf == nullptr )
         return false;
 
-    memset( paletteBuf, 0, paletteBufSize );
+    memset( paletteBuf, 0, paletteBufSize );*/
     return true;
 }
 
 bool Graphics::Init()
 {
-    const char* vsource = nullptr;
+    /*const char* vsource = nullptr;
     const char* psource = nullptr;
 
     paletteBmp = al_create_bitmap( PaletteBmpWidth, PaletteBmpHeight );
@@ -129,7 +129,7 @@ bool Graphics::Init()
         return false;
 
     if ( !AllocatePaletteBuffer() )
-        return false;
+        return false;*/
 
     return true;
 }
@@ -138,16 +138,16 @@ void Graphics::LoadTileSheet( int slot, const char* path )
 {
     if ( tileSheets[slot] != nullptr )
     {
-        al_destroy_bitmap( tileSheets[slot] );
+        //al_destroy_bitmap( tileSheets[slot] );
         tileSheets[slot] = nullptr;
     }
 
-    tileSheets[slot] = al_load_bitmap( path );
-    assert( tileSheets[slot] != nullptr );
+    //tileSheets[slot] = al_load_bitmap( path );
+    //assert( tileSheets[slot] != nullptr );
 
     if ( tileSheets[slot] == nullptr )
     {
-        tileSheets[slot] = al_create_bitmap( 1, 1 );
+        //tileSheets[slot] = al_create_bitmap( 1, 1 );
     }
 }
 
@@ -172,16 +172,16 @@ void Graphics::LoadSystemPalette( const int* colorsArgb8 )
     }
 }
 
-ALLEGRO_COLOR Graphics::GetSystemColor( int sysColor )
+/*ALLEGRO_COLOR Graphics::GetSystemColor( int sysColor )
 {
     int argb8 = activeSystemPalette[sysColor];
-    return al_map_rgba( 
+    return al_map_rgba(
         (argb8 >> 16) & 0xFF,
         (argb8 >>  8) & 0xFF,
         (argb8 >>  0) & 0xFF,
         (argb8 >> 24) & 0xFF
         );
-}
+}*/
 
 // TODO: this method has to consider the picture format
 void Graphics::SetColor( int paletteIndex, int colorIndex, int colorArgb8 )
@@ -215,7 +215,7 @@ void Graphics::SetColorIndexed( int paletteIndex, int colorIndex, int sysColor )
 
 void Graphics::SetPaletteIndexed( int paletteIndex, const uint8_t* sysColors )
 {
-    int colorsArgb8[4] = 
+    int colorsArgb8[4] =
     {
         0,
         activeSystemPalette[sysColors[1]],
@@ -228,7 +228,7 @@ void Graphics::SetPaletteIndexed( int paletteIndex, const uint8_t* sysColors )
 
 void Graphics::UpdatePalettes()
 {
-    int format = al_get_bitmap_format( paletteBmp );
+    /*int format = al_get_bitmap_format( paletteBmp );
     ALLEGRO_LOCKED_REGION*  region = al_lock_bitmap( paletteBmp, format, ALLEGRO_LOCK_WRITEONLY );
     assert( region != nullptr );
 
@@ -238,7 +238,7 @@ void Graphics::UpdatePalettes()
 
     memcpy( base, paletteBuf, paletteBufSize );
 
-    al_unlock_bitmap( paletteBmp );
+    al_unlock_bitmap( paletteBmp );*/
 }
 
 void Graphics::SwitchSystemPalette( int* newSystemPalette )
@@ -251,7 +251,7 @@ void Graphics::SwitchSystemPalette( int* newSystemPalette )
     for ( int i = 0; i < PaletteCount; i++ )
     {
         const uint8_t* sysColors = palettes[i];
-        int colorsArgb8[4] = 
+        int colorsArgb8[4] =
         {
             0,
             activeSystemPalette[sysColors[1]],
@@ -275,22 +275,22 @@ void Graphics::DisableGrayscale()
 
 void Graphics::Begin()
 {
-    bool bRet;
+    //bool bRet;
 
-    bRet = al_set_shader_sampler( "palTex", paletteBmp, 1 );
-    assert( bRet );
+    //bRet = al_set_shader_sampler( "palTex", paletteBmp, 1 );
+    //assert( bRet );
 
-    al_hold_bitmap_drawing( true );
+    //al_hold_bitmap_drawing( true );
 }
 
 void Graphics::End()
 {
-    al_hold_bitmap_drawing( false );
+    //al_hold_bitmap_drawing( false );
 }
 
 void Graphics::DrawBitmap(
     ALLEGRO_BITMAP* bitmap,
-    int srcX, 
+    int srcX,
     int srcY,
     int width,
     int height,
@@ -301,9 +301,9 @@ void Graphics::DrawBitmap(
     )
 {
     float palRed = palette / (float) PaletteBmpHeight;
-    ALLEGRO_COLOR tint = al_map_rgba_f( palRed, 0, 0, 1 );
+    //ALLEGRO_COLOR tint = al_map_rgba_f( palRed, 0, 0, 1 );
 
-    al_draw_tinted_bitmap_region(
+    /*al_draw_tinted_bitmap_region(
         bitmap,
         tint,
         srcX,
@@ -312,17 +312,17 @@ void Graphics::DrawBitmap(
         height,
         destX,
         destY,
-        flags );
+        flags );*/
 }
 
-void Graphics::DrawSpriteTile( 
-    int slot, 
-    int srcX, 
-    int srcY, 
-    int width, 
-    int height, 
-    int destX, 
-    int destY, 
+void Graphics::DrawSpriteTile(
+    int slot,
+    int srcX,
+    int srcY,
+    int width,
+    int height,
+    int destX,
+    int destY,
     int palette,
     int flags
     )
@@ -339,19 +339,19 @@ void Graphics::DrawSpriteTile(
         flags );
 }
 
-void Graphics::DrawTile( 
-    int slot, 
-    int srcX, 
-    int srcY, 
-    int width, 
-    int height, 
-    int destX, 
-    int destY, 
+void Graphics::DrawTile(
+    int slot,
+    int srcX,
+    int srcY,
+    int width,
+    int height,
+    int destX,
+    int destY,
     int palette,
     int flags
     )
 {
-    assert( slot < Sheet_Max );
+    /*assert( slot < Sheet_Max );
 
     float palRed = palette / (float) PaletteBmpHeight;
     ALLEGRO_COLOR tint = al_map_rgba_f( palRed, 0, 0, 1 );
@@ -365,7 +365,7 @@ void Graphics::DrawTile(
         height,
         destX,
         destY,
-        flags );
+        flags );*/
 }
 
 void Graphics::DrawStripSprite16x16(
@@ -408,11 +408,11 @@ void Graphics::SetViewParams( float scale, float x, float y )
 
 void Graphics::SetClip( int x, int y, int width, int height )
 {
-    al_get_clipping_rectangle( 
+/*    al_get_clipping_rectangle(
         &savedClipX,
         &savedClipY,
         &savedClipWidth,
-        &savedClipHeight );
+        &savedClipHeight );*/
 
     int y2 = y + height;
 
@@ -445,18 +445,18 @@ void Graphics::SetClip( int x, int y, int width, int height )
     int clipWidth = width * viewScale;
     int clipHeight = height * viewScale;
 
-    al_set_clipping_rectangle( 
-        clipX, 
-        clipY, 
-        clipWidth, 
-        clipHeight );
+    /*al_set_clipping_rectangle(
+        clipX,
+        clipY,
+        clipWidth,
+        clipHeight );*/
 }
 
 void Graphics::ResetClip()
 {
-    al_set_clipping_rectangle( 
+    /*al_set_clipping_rectangle(
         savedClipX,
         savedClipY,
         savedClipWidth,
-        savedClipHeight );
+        savedClipHeight );*/
 }

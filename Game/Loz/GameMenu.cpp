@@ -5,6 +5,7 @@
    See the LICENSE text file for details.
 */
 
+#include "gameMakerLibrary.hpp"
 #include "Common.h"
 #include "GameMenu.h"
 #include "Graphics.h"
@@ -17,22 +18,22 @@
 #include "World.h"
 
 
-const static uint8_t SelectStr[] = 
+const static uint8_t SelectStr[] =
 { 0x62, 0x24, 0x1C, 0x24, 0x0E, 0x24, 0x15, 0x24, 0x0E, 0x24, 0x0C, 0x24, 0x1D, 0x24, 0x62 };
 
-const static uint8_t NameStr[] = 
+const static uint8_t NameStr[] =
 { 0x24, 0x17, 0x0A, 0x16, 0x0E, 0x24 };
 
-const static uint8_t LifeStr[] = 
+const static uint8_t LifeStr[] =
 { 0x24, 0x15, 0x12, 0x0F, 0x0E, 0x24 };
 
-const static uint8_t RegisterStr[] = 
-{ 
-    0x1B, 0x0E, 0x10, 0x12, 0x1C, 0x1D, 0x0E, 0x1B, 0x24, 0x22, 0x18, 0x1E, 0x1B, 0x24, 0x17, 0x0A, 
+const static uint8_t RegisterStr[] =
+{
+    0x1B, 0x0E, 0x10, 0x12, 0x1C, 0x1D, 0x0E, 0x1B, 0x24, 0x22, 0x18, 0x1E, 0x1B, 0x24, 0x17, 0x0A,
     0x16, 0x0E
 };
 
-const static uint8_t EliminateStr[] = 
+const static uint8_t EliminateStr[] =
 { 0x0E, 0x15, 0x12, 0x16, 0x12, 0x17, 0x0A, 0x1D, 0x12, 0x18, 0x17, 0x24, 0x16, 0x18, 0x0D, 0x0E };
 
 
@@ -40,7 +41,7 @@ GameMenu::GameMenu( const std::shared_ptr<ProfileSummarySnapshot>& summaries )
     :   summaries( summaries ),
         selectedIndex( -1 )
 {
-    static const uint8_t palettes[PaletteCount][4] = 
+    static const uint8_t palettes[PaletteCount][4] =
     {
         { 0x0F, 0x30, 0x00, 0x12 },
         { 0x0F, 0x16, 0x27, 0x36 },
@@ -83,12 +84,12 @@ void StartWorld( int fileIndex )
 
 void GameMenu::Update()
 {
-    if ( Input::IsButtonPressing( InputButtons::Select ) )
+    if (keyboard_check_pressed(*vk_space))
     {
         SelectNext();
         Sound::PlayEffect( SEffect_cursor );
     }
-    else if ( Input::IsButtonPressing( InputButtons::Start ) )
+    else if (keyboard_check_pressed(*vk_enter))
     {
         if ( selectedIndex < 3 )
             StartWorld( selectedIndex );
@@ -103,7 +104,7 @@ void GameMenu::Draw()
 {
     Graphics::Begin();
 
-    al_clear_to_color( al_map_rgb( 0, 0, 0 ) );
+//    al_clear_to_color( al_map_rgb( 0, 0, 0 ) );
 
     DrawBox( 0x18, 0x40, 0xD0, 0x90 );
 

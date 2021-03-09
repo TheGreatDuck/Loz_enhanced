@@ -10,9 +10,9 @@
 #include "Input.h"
 #include "Sound.h"
 #include "World.h"
-#include <allegro5/allegro_acodec.h>
-#include <allegro5/allegro_audio.h>
-#include <allegro5/allegro_image.h>
+//#include <allegro5/allegro_acodec.h>
+//#include <allegro5/allegro_audio.h>
+//#include <allegro5/allegro_image.h>
 
 
 const double FrameTime = 1 / 60.0;
@@ -35,36 +35,34 @@ uint32_t GetFrameCounter()
 
 void Run()
 {
-    ALLEGRO_EVENT event = { 0 };
-    ALLEGRO_EVENT_SOURCE* keyboardSource = al_get_keyboard_event_source();
-    ALLEGRO_EVENT_SOURCE* displaySource = al_get_display_event_source( display );
-    ALLEGRO_EVENT_SOURCE* joystickSource = al_get_joystick_event_source();
+    //ALLEGRO_EVENT event = { 0 };
+    //ALLEGRO_EVENT_SOURCE* keyboardSource = al_get_keyboard_event_source();
+    //ALLEGRO_EVENT_SOURCE* displaySource = al_get_display_event_source( display );
+    //ALLEGRO_EVENT_SOURCE* joystickSource = al_get_joystick_event_source();
 
-    if ( keyboardSource == nullptr )
-        return;
-    if ( displaySource == nullptr )
-        return;
-    if ( joystickSource == nullptr )
-        return;
+    //if ( keyboardSource == nullptr )
+    //    return;
+    //if ( displaySource == nullptr )
+    //    return;
+    //if ( joystickSource == nullptr )
+    //    return;
 
-    al_register_event_source( eventQ, keyboardSource );
-    al_register_event_source( eventQ, displaySource );
-    al_register_event_source( eventQ, joystickSource );
+    //al_register_event_source( eventQ, keyboardSource );
+    //al_register_event_source( eventQ, displaySource );
+    //al_register_event_source( eventQ, joystickSource );
 
     World::Init();
 
-    double startTime = al_get_time();
+    //double startTime = al_get_time();
     double waitSpan = 0;
 
     while ( true )
     {
-        bool updated = false;
-
-        while ( al_wait_for_event_timed( eventQ, &event, waitSpan ) )
+        /*while ( al_wait_for_event_timed( eventQ, &event, waitSpan ) )
         {
             waitSpan = 0;
             if ( event.any.type == ALLEGRO_EVENT_DISPLAY_CLOSE
-                || (event.any.type == ALLEGRO_EVENT_KEY_DOWN 
+                || (event.any.type == ALLEGRO_EVENT_KEY_DOWN
                 && event.keyboard.keycode == ALLEGRO_KEY_ESCAPE) )
             {
                 goto Done;
@@ -81,34 +79,13 @@ void Run()
             {
                 al_reconfigure_joysticks();
             }
-        }
+        }*/
 
-        double now = al_get_time();
-
-        while ( (now - startTime) >= FrameTime )
-        {
-            frameCounter++;
-
-            Input::Update();
-            World::Update();
-            Sound::Update();
-
-            startTime += FrameTime;
-            updated = true;
-        }
-
-        if ( updated )
-        {
-            World::Draw();
-
-            al_flip_display();
-        }
-
-        double timeLeft = startTime + FrameTime - al_get_time();
-        if ( timeLeft >= .002 )
-            waitSpan = timeLeft - .001;
-        else
-            waitSpan = 0;
+        frameCounter++;
+        World::Update();
+        Sound::Update();
+        World::Draw();
+        //al_flip_display();
     }
 
 Done:
@@ -141,14 +118,14 @@ void ResizeView( int screenWidth, int screenHeight )
     int offsetX = (screenWidth - viewWidth) / 2;
     int offsetY = (screenHeight - viewHeight) / 2;
 
-    al_set_clipping_rectangle( offsetX, offsetY, viewWidth, viewHeight );
+    //al_set_clipping_rectangle( offsetX, offsetY, viewWidth, viewHeight );
 
-    ALLEGRO_TRANSFORM t;
+    //ALLEGRO_TRANSFORM t;
 
-    al_identity_transform( &t );
-    al_scale_transform( &t, scale, scale );
-    al_translate_transform( &t, offsetX, offsetY );
-    al_use_transform( &t );
+    //al_identity_transform( &t );
+    //al_scale_transform( &t, scale, scale );
+    //al_translate_transform( &t, offsetX, offsetY );
+    //al_use_transform( &t );
 
     Graphics::SetViewParams( scale, offsetX, offsetY );
 }
@@ -156,7 +133,7 @@ void ResizeView( int screenWidth, int screenHeight )
 void AdjustForDpi( int& width, int& height )
 {
 #if _WIN32
-    HDC hDC = GetDC( NULL );
+    /*HDC hDC = GetDC( NULL );
     if ( hDC != NULL )
     {
         int dpiX = GetDeviceCaps( hDC, LOGPIXELSX );
@@ -164,13 +141,13 @@ void AdjustForDpi( int& width, int& height )
         ReleaseDC( NULL, hDC );
         width = MulDiv( width, dpiX, 96 );
         height = MulDiv( height, dpiY, 96 );
-    }
+    }*/
 #endif
 }
 
 int GetGraphicsRendererDisplayFlag()
 {
-    const char* setting = al_get_config_value( globalConfig, GraphicsSection, "renderer" );
+    /*const char* setting = al_get_config_value( globalConfig, GraphicsSection, "renderer" );
     int flag = 0;
 
     if ( setting != nullptr )
@@ -179,14 +156,14 @@ int GetGraphicsRendererDisplayFlag()
             flag = ALLEGRO_DIRECT3D_INTERNAL;
         else if ( 0 == _stricmp( setting, "opengl" ) )
             flag = ALLEGRO_OPENGL;
-    }
+    }*/
 
-    return flag;
+    return 0;
 }
 
 bool MakeDisplay()
 {
-    int width = StdViewWidth * 2;
+    /*int width = StdViewWidth * 2;
     int height = StdViewHeight * 2;
     int newFlags = ALLEGRO_RESIZABLE | ALLEGRO_PROGRAMMABLE_PIPELINE;
     int rendererFlag = GetGraphicsRendererDisplayFlag();
@@ -203,7 +180,7 @@ bool MakeDisplay()
     if ( display == nullptr )
         return false;
 
-    ResizeView( width, height );
+    ResizeView( width, height );*/
 
     return true;
 }
@@ -211,7 +188,7 @@ bool MakeDisplay()
 ALLEGRO_CONFIG* LoadConfig()
 {
     ALLEGRO_CONFIG* config = nullptr;
-    ALLEGRO_PATH* configPath = al_get_standard_path( ALLEGRO_USER_SETTINGS_PATH );
+    /*ALLEGRO_PATH* configPath = al_get_standard_path( ALLEGRO_USER_SETTINGS_PATH );
 
     if ( configPath != nullptr )
     {
@@ -224,7 +201,7 @@ ALLEGRO_CONFIG* LoadConfig()
         }
 
         al_destroy_path( configPath );
-    }
+    }*/
 
     return config;
 }
@@ -236,32 +213,32 @@ ALLEGRO_CONFIG* GetConfig()
 
 bool InitAllegro()
 {
-    if ( !al_init() )
-        return false;
+    //if ( !al_init() )
+    //    return false;
 
-    if ( !al_install_keyboard() )
-        return false;
+    //if ( !al_install_keyboard() )
+    //    return false;
 
-    if ( !al_install_joystick() )
-        return false;
+    //if ( !al_install_joystick() )
+    //    return false;
 
-    if ( !al_init_image_addon() )
-        return false;
+    //if ( !al_init_image_addon() )
+    //    return false;
 
-    if ( !al_install_audio() )
-        return false;
+    //if ( !al_install_audio() )
+    //    return false;
 
-    if ( !al_init_acodec_addon() )
-        return false;
+    //if ( !al_init_acodec_addon() )
+    //    return false;
 
     globalConfig = LoadConfig();
 
     if ( !MakeDisplay() )
         return false;
 
-    eventQ = al_create_event_queue();
-    if ( eventQ == nullptr )
-        return false;
+    //eventQ = al_create_event_queue();
+    //if ( eventQ == nullptr )
+    //    return false;
 
     if ( !Graphics::Init() )
         return false;
@@ -271,7 +248,7 @@ bool InitAllegro()
 
     Input::Init();
 
-    al_destroy_config( globalConfig );
+    //al_destroy_config( globalConfig );
     globalConfig = nullptr;
 
     return true;

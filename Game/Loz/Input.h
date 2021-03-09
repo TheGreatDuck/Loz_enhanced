@@ -52,10 +52,6 @@ public:
     static bool IsKeyPressing( int keyCode );
     static ButtonState GetKey( int keyCode );
 
-    static bool IsButtonDown( int buttonCode );
-    static bool IsButtonPressing( int buttonCode );
     static ButtonState GetButton( int buttonCode );
     static Direction GetInputDirection();
-
-    static void Update();
 };
