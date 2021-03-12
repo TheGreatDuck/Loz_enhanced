@@ -8,7 +8,6 @@
 #include "Common.h"
 #include "Graphics.h"
 
-
 // Y determines the palette, X determines the color in the palette.
 // But, it looks like the minimum height of a bitmap is 16.
 const int PaletteBmpWidth = Util::Max( PaletteLength, 16 );
@@ -165,11 +164,8 @@ const SpriteAnim* Graphics::GetAnimation( int slot, int animIndex )
 void Graphics::LoadSystemPalette( const int* colorsArgb8 )
 {
     memcpy( systemPalette, colorsArgb8, sizeof systemPalette );
-
     for ( int i = 0; i < SysPaletteLength; i++ )
-    {
         grayscalePalette[i] = systemPalette[i & 0x30];
-    }
 }
 
 /*ALLEGRO_COLOR Graphics::GetSystemColor( int sysColor )
@@ -199,9 +195,7 @@ void Graphics::SetPalette( int paletteIndex, const int* colorsArgb8 )
     unsigned char* line = paletteBuf + y * paletteStride;
 
     for ( int x = 0; x < PaletteLength; x++ )
-    {
         ((int*) line)[x] = colorsArgb8[x];
-    }
 }
 
 void Graphics::SetColorIndexed( int paletteIndex, int colorIndex, int sysColor )
@@ -288,131 +282,54 @@ void Graphics::End()
     //al_hold_bitmap_drawing( false );
 }
 
-void Graphics::DrawBitmap(
-    ALLEGRO_BITMAP* bitmap,
-    int srcX,
-    int srcY,
-    int width,
-    int height,
-    int destX,
-    int destY,
-    int palette,
-    int flags
-    )
+void Graphics::DrawBitmap(ALLEGRO_BITMAP* bitmap, int srcX, int srcY, int width, int height, int destX, int destY, int palette, int flags)
 {
     float palRed = palette / (float) PaletteBmpHeight;
     //ALLEGRO_COLOR tint = al_map_rgba_f( palRed, 0, 0, 1 );
-
-    /*al_draw_tinted_bitmap_region(
-        bitmap,
-        tint,
-        srcX,
-        srcY,
-        width,
-        height,
-        destX,
-        destY,
-        flags );*/
+    //al_draw_tinted_bitmap_region(bitmap, tint, srcX, srcY, width, height, destX, destY, flags);
 }
 
-void Graphics::DrawSpriteTile(
-    int slot,
-    int srcX,
-    int srcY,
-    int width,
-    int height,
-    int destX,
-    int destY,
-    int palette,
-    int flags
-    )
+void Graphics::DrawSpriteTile(int slot, int srcX, int srcY, int width, int height, int destX, int destY, int palette, int flags)
 {
-    DrawTile(
-        slot,
-        srcX,
-        srcY,
-        width,
-        height,
-        destX,
-        destY + 1,
-        palette,
-        flags );
+    DrawTile(slot, srcX, srcY, width, height, destX, destY + 1, palette, flags);
 }
 
-void Graphics::DrawTile(
-    int slot,
-    int srcX,
-    int srcY,
-    int width,
-    int height,
-    int destX,
-    int destY,
-    int palette,
-    int flags
-    )
+void Graphics::DrawTile(int slot, int srcX, int srcY, int width, int height, int destX, int destY, int palette, int flags)
 {
     /*assert( slot < Sheet_Max );
 
     float palRed = palette / (float) PaletteBmpHeight;
     ALLEGRO_COLOR tint = al_map_rgba_f( palRed, 0, 0, 1 );
 
-    al_draw_tinted_bitmap_region(
-        tileSheets[slot],
-        tint,
-        srcX,
-        srcY,
-        width,
-        height,
-        destX,
-        destY,
-        flags );*/
+    al_draw_tinted_bitmap_region(tileSheets[slot], tint, srcX, srcY, width, height, destX, destY, flags);*/
 }
 
-void Graphics::DrawStripSprite16x16(
-    int slot,
-    int firstTile,
-    int destX,
-    int destY,
-    int palette
-)
+void Graphics::DrawStripSprite16x16(int slot, int firstTile, int destX, int destY, int palette)
 {
     static const uint8_t offsetsX[4] = { 0, 0, 8, 8 };
     static const uint8_t offsetsY[4] = { 0, 8, 0, 8 };
     int tileRef = firstTile;
 
-    for ( int i = 0; i < 4; i++ )
+    for (int i = 0; i < 4; i++)
     {
         int srcX = (tileRef & 0x0F) * TileWidth;
         int srcY = ((tileRef & 0xF0) >> 4) * TileHeight;
         tileRef++;
 
-        DrawTile(
-            slot,
-            srcX,
-            srcY,
-            TileWidth,
-            TileHeight,
-            destX + offsetsX[i],
-            destY + offsetsY[i],
-            palette,
-            0 );
+        DrawTile(slot, srcX, srcY, TileWidth, TileHeight, destX + offsetsX[i], destY + offsetsY[i], palette, 0);
     }
 }
 
-void Graphics::SetViewParams( float scale, float x, float y )
+void Graphics::SetViewParams(float scale, float x, float y)
 {
     viewScale = scale;
     viewOffsetX = x;
     viewOffsetY = y;
 }
 
-void Graphics::SetClip( int x, int y, int width, int height )
+void Graphics::SetClip(int x, int y, int width, int height)
 {
-/*    al_get_clipping_rectangle(
-        &savedClipX,
-        &savedClipY,
-        &savedClipWidth,
-        &savedClipHeight );*/
+    //al_get_clipping_rectangle(&savedClipX, &savedClipY, &savedClipWidth, &savedClipHeight);
 
     int y2 = y + height;
 
@@ -420,13 +337,11 @@ void Graphics::SetClip( int x, int y, int width, int height )
     {
         height = 0;
         y = 0;
-    }
-    else if ( y > StdViewHeight )
+    } else if ( y > StdViewHeight )
     {
         height = 0;
         y = StdViewHeight;
-    }
-    else
+    } else
     {
         if ( y < 0 )
         {
@@ -435,9 +350,7 @@ void Graphics::SetClip( int x, int y, int width, int height )
         }
 
         if ( y2 > StdViewHeight )
-        {
             height = StdViewHeight - y;
-        }
     }
 
     int clipX = viewOffsetX + x * viewScale;
@@ -445,18 +358,10 @@ void Graphics::SetClip( int x, int y, int width, int height )
     int clipWidth = width * viewScale;
     int clipHeight = height * viewScale;
 
-    /*al_set_clipping_rectangle(
-        clipX,
-        clipY,
-        clipWidth,
-        clipHeight );*/
+    //al_set_clipping_rectangle(clipX, clipY, clipWidth, clipHeight);
 }
 
 void Graphics::ResetClip()
 {
-    /*al_set_clipping_rectangle(
-        savedClipX,
-        savedClipY,
-        savedClipWidth,
-        savedClipHeight );*/
+    //al_set_clipping_rectangle(savedClipX, savedClipY, savedClipWidth, savedClipHeight);
 }

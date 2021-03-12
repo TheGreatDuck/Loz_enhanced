@@ -66,16 +66,6 @@ struct OWRoomFlags
 
     uint8_t Data;
 
-    bool GetItemState()
-    {
-        return Data & ItemState;
-    }
-
-    void SetItemState()
-    {
-        Data |= ItemState;
-    }
-
     bool GetShortcutState()
     {
         return Data & ShortcutState;
@@ -119,16 +109,6 @@ struct UWRoomFlags
     };
 
     uint8_t Data;
-
-    bool GetItemState()
-    {
-        return Data & ItemState;
-    }
-
-    void SetItemState()
-    {
-        Data |= ItemState;
-    }
 
     bool GetVisitState()
     {
@@ -174,7 +154,4 @@ struct Profile
     OWRoomFlags OverworldFlags[LevelBlockRooms];
     UWRoomFlags LevelFlags1[LevelBlockRooms];
     UWRoomFlags LevelFlags2[LevelBlockRooms];
-
-    uint GetMaxHeartsValue();
-    static uint GetMaxHeartsValue( uint heartContainers );
 };

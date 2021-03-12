@@ -31,9 +31,6 @@ struct CaveSpec;
 struct Profile;
 struct SparseRoomItem;
 struct ObjectAttr;
-class Credits;
-class TextBox;
-class Menu;
 struct ProfileSummarySnapshot;
 struct UWRoomFlags;
 
@@ -297,7 +294,6 @@ public:
     static bool IsLiftingItem();
     static bool IsUWCellar();
     static void EndLevel();
-    static void WinGame();
     static void AddUWRoomItem();
     static Direction GetDoorwayDir();
     static void SetDoorwayDir( Direction dir );

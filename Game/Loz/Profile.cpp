@@ -6,15 +6,3 @@
 */
 
 #include "Common.h"
-#include "Profile.h"
-
-
-uint Profile::GetMaxHeartsValue()
-{
-    return GetMaxHeartsValue( Items[ItemSlot_HeartContainers] );
-}
-
-uint Profile::GetMaxHeartsValue( uint heartContainers )
-{
-    return (heartContainers << 8) - 1;
-}

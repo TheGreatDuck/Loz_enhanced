@@ -426,9 +426,6 @@ public:
     virtual void Draw();
 
 private:
-    void UpdateDialog();
-    void DrawDialog();
-
     void CheckStairsHit();
     void CheckPlayerHit();
     void HandlePlayerHit( int index );

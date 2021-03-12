@@ -1754,8 +1754,6 @@ Person::Person( ObjType type, int x, int y, const CaveSpec* spec )
     int animId = sPersonGraphics[animIndex].AnimId;
     image.anim = Graphics::GetAnimation( Sheet_PlayerAndItems, animId );
 
-    textBox = new TextBox( World::GetString( stringId ) );
-
     memset( priceStrs, Char_Space, sizeof priceStrs );
 
     if ( this->spec.GetShowPrices() || this->spec.GetSpecial() )
@@ -1797,7 +1795,6 @@ void Person::Update()
 {
     if ( state == Idle )
     {
-        UpdateDialog();
         CheckPlayerHit();
 
         if ( !World::IsOverworld() )
@@ -1825,35 +1822,6 @@ void Person::Update()
     else if ( state == WaitingForStairs )
     {
         CheckStairsHit();
-    }
-}
-
-void Person::UpdateDialog()
-{
-    if ( textBox->IsDone() )
-        return;
-
-    textBox->Update();
-
-    if ( textBox->IsDone() )
-    {
-        if ( spec.GetStringId() == String_DoorRepair )
-        {
-            World::PostRupeeLoss( 20 );
-            World::MarkItem();
-        }
-        else if ( GetType() == Obj_Grumble )
-        {
-            state = WaitingForFood;
-        }
-        else if ( GetType() == Obj_CaveShortcut )
-        {
-            state = WaitingForStairs;
-        }
-
-        Player* player = World::GetPlayer();
-        if ( player->GetState() == Player::Paused )
-            player->SetState( Player::Idle );
     }
 }
 
@@ -1940,8 +1908,6 @@ void Person::HandlePickUpHint( int index )
         else
             assert( false );
     }
-
-    textBox->Reset( World::GetString( stringId ) );
 
     spec.ClearShowPrices();
     spec.ClearPickUp();
@@ -2136,10 +2102,6 @@ void Person::Draw()
         if ( (GetFrameCounter() & 1) == 0 )
             return;
     }
-    else if ( state == Idle || state == WaitingForFood || state == WaitingForStairs )
-    {
-        DrawDialog();
-    }
 
     int animIndex = spec.DwellerType - Obj_OldMan;
     int palette = sPersonGraphics[animIndex].PaletteAttrs;
@@ -2168,12 +2130,6 @@ void Person::Draw()
         DrawChar( Char_X, 0x40, 0xB0, 0 );
     }
 }
-
-void Person::DrawDialog()
-{
-    textBox->Draw();
-}
-
 
 //----------------------------------------------------------------------------
 //  ItemObj

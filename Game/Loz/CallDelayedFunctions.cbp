@@ -95,24 +95,6 @@
 		<Unit filename="Common.h">
 			<Option target="Release" />
 		</Unit>
-		<Unit filename="Credits.cpp">
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="Credits.h">
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="EliminateMenu.cpp">
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="EliminateMenu.h">
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="GameMenu.cpp">
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="GameMenu.h">
-			<Option target="Release" />
-		</Unit>
 		<Unit filename="Global.h">
 			<Option target="Release" />
 		</Unit>
@@ -135,9 +117,6 @@
 			<Option target="Release" />
 		</Unit>
 		<Unit filename="Loz.cpp">
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="Menu.h">
 			<Option target="Release" />
 		</Unit>
 		<Unit filename="Monsters.cpp">
@@ -176,19 +155,7 @@
 		<Unit filename="RcId.h">
 			<Option target="Release" />
 		</Unit>
-		<Unit filename="RegisterMenu.cpp">
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="RegisterMenu.h">
-			<Option target="Release" />
-		</Unit>
 		<Unit filename="RoomAttrs.h">
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="SaveFolder.cpp">
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="SaveFolder.h">
 			<Option target="Release" />
 		</Unit>
 		<Unit filename="Sound.cpp">
@@ -213,9 +180,6 @@
 			<Option target="Release" />
 		</Unit>
 		<Unit filename="Submenu.cpp">
-			<Option target="Release" />
-		</Unit>
-		<Unit filename="Submenu.h">
 			<Option target="Release" />
 		</Unit>
 		<Unit filename="TextBox.cpp">

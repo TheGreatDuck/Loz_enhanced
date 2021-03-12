@@ -6,23 +6,3 @@
 */
 
 #pragma once
-
-#include "Menu.h"
-
-struct ProfileSummarySnapshot;
-
-
-class GameMenu : public Menu
-{
-    std::shared_ptr<ProfileSummarySnapshot> summaries;
-    int selectedIndex;
-
-public:
-    GameMenu( const std::shared_ptr<ProfileSummarySnapshot>& summaries );
-
-    virtual void Update();
-    virtual void Draw();
-
-private:
-    void SelectNext();
-};

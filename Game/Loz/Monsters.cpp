@@ -43,7 +43,7 @@ const ObjType ShotFromOctorock  = Obj_FlyingRock;
 
 const int DirCount = 4;
 
-static const uint8_t    armosAnimMap[DirCount] = 
+static const uint8_t    armosAnimMap[DirCount] =
 {
     Anim_OW_Armos_Right,
     Anim_OW_Armos_Left,
@@ -51,7 +51,7 @@ static const uint8_t    armosAnimMap[DirCount] =
     Anim_OW_Armos_Up
 };
 
-static const uint8_t    lynelAnimMap[DirCount] = 
+static const uint8_t    lynelAnimMap[DirCount] =
 {
     Anim_OW_Lynel_Right,
     Anim_OW_Lynel_Left,
@@ -59,7 +59,7 @@ static const uint8_t    lynelAnimMap[DirCount] =
     Anim_OW_Lynel_Up,
 };
 
-static const uint8_t    moblinAnimMap[DirCount] = 
+static const uint8_t    moblinAnimMap[DirCount] =
 {
     Anim_OW_Moblin_Right,
     Anim_OW_Moblin_Left,
@@ -67,7 +67,7 @@ static const uint8_t    moblinAnimMap[DirCount] =
     Anim_OW_Moblin_Up,
 };
 
-static const uint8_t    octorockAnimMap[DirCount] = 
+static const uint8_t    octorockAnimMap[DirCount] =
 {
     Anim_OW_Octorock_Right,
     Anim_OW_Octorock_Left,
@@ -75,7 +75,7 @@ static const uint8_t    octorockAnimMap[DirCount] =
     Anim_OW_Octorock_Up,
 };
 
-static const uint8_t    ghiniAnimMap[DirCount] = 
+static const uint8_t    ghiniAnimMap[DirCount] =
 {
     Anim_OW_Ghini_Right,
     Anim_OW_Ghini_Left,
@@ -83,7 +83,7 @@ static const uint8_t    ghiniAnimMap[DirCount] =
     Anim_OW_Ghini_UpRight,
 };
 
-static const uint8_t    stalfosAnimMap[DirCount] = 
+static const uint8_t    stalfosAnimMap[DirCount] =
 {
     Anim_UW_Stalfos,
     Anim_UW_Stalfos,
@@ -91,7 +91,7 @@ static const uint8_t    stalfosAnimMap[DirCount] =
     Anim_UW_Stalfos,
 };
 
-static const uint8_t    goriyaAnimMap[DirCount] = 
+static const uint8_t    goriyaAnimMap[DirCount] =
 {
     Anim_UW_Goriya_Right,
     Anim_UW_Goriya_Left,
@@ -99,7 +99,7 @@ static const uint8_t    goriyaAnimMap[DirCount] =
     Anim_UW_Goriya_Up
 };
 
-static const uint8_t    darknutAnimMap[DirCount] = 
+static const uint8_t    darknutAnimMap[DirCount] =
 {
     Anim_UW_Darknut_Right,
     Anim_UW_Darknut_Left,
@@ -107,7 +107,7 @@ static const uint8_t    darknutAnimMap[DirCount] =
     Anim_UW_Darknut_Up
 };
 
-static const uint8_t    gibdoAnimMap[DirCount] = 
+static const uint8_t    gibdoAnimMap[DirCount] =
 {
     Anim_UW_Gibdo,
     Anim_UW_Gibdo,
@@ -116,7 +116,7 @@ static const uint8_t    gibdoAnimMap[DirCount] =
 };
 
 
-static const WalkerSpec armosSpec = 
+static const WalkerSpec armosSpec =
 {
     armosAnimMap,
     12,
@@ -125,7 +125,7 @@ static const WalkerSpec armosSpec =
     Obj_None
 };
 
-static const WalkerSpec blueLynelSpec = 
+static const WalkerSpec blueLynelSpec =
 {
     lynelAnimMap,
     12,
@@ -134,7 +134,7 @@ static const WalkerSpec blueLynelSpec =
     ShotFromLynel
 };
 
-static const WalkerSpec redLynelSpec = 
+static const WalkerSpec redLynelSpec =
 {
     lynelAnimMap,
     12,
@@ -143,7 +143,7 @@ static const WalkerSpec redLynelSpec =
     ShotFromLynel
 };
 
-static const WalkerSpec blueMoblinSpec = 
+static const WalkerSpec blueMoblinSpec =
 {
     moblinAnimMap,
     12,
@@ -152,7 +152,7 @@ static const WalkerSpec blueMoblinSpec =
     ShotFromMoblin
 };
 
-static const WalkerSpec redMoblinSpec = 
+static const WalkerSpec redMoblinSpec =
 {
     moblinAnimMap,
     12,
@@ -161,7 +161,7 @@ static const WalkerSpec redMoblinSpec =
     ShotFromMoblin
 };
 
-static const WalkerSpec blueSlowOctorockSpec = 
+static const WalkerSpec blueSlowOctorockSpec =
 {
     octorockAnimMap,
     12,
@@ -170,7 +170,7 @@ static const WalkerSpec blueSlowOctorockSpec =
     ShotFromOctorock
 };
 
-static const WalkerSpec blueFastOctorockSpec = 
+static const WalkerSpec blueFastOctorockSpec =
 {
     octorockAnimMap,
     12,
@@ -179,7 +179,7 @@ static const WalkerSpec blueFastOctorockSpec =
     ShotFromOctorock
 };
 
-static const WalkerSpec redSlowOctorockSpec = 
+static const WalkerSpec redSlowOctorockSpec =
 {
     octorockAnimMap,
     12,
@@ -188,7 +188,7 @@ static const WalkerSpec redSlowOctorockSpec =
     ShotFromOctorock
 };
 
-static const WalkerSpec redFastOctorockSpec = 
+static const WalkerSpec redFastOctorockSpec =
 {
     octorockAnimMap,
     12,
@@ -197,7 +197,7 @@ static const WalkerSpec redFastOctorockSpec =
     ShotFromOctorock
 };
 
-static const WalkerSpec stalfosSpec = 
+static const WalkerSpec stalfosSpec =
 {
     stalfosAnimMap,
     16,
@@ -206,7 +206,7 @@ static const WalkerSpec stalfosSpec =
     Obj_PlayerSwordShot,
 };
 
-static const WalkerSpec blueGoriyaSpec = 
+static const WalkerSpec blueGoriyaSpec =
 {
     goriyaAnimMap,
     12,
@@ -215,7 +215,7 @@ static const WalkerSpec blueGoriyaSpec =
     Obj_None
 };
 
-static const WalkerSpec redGoriyaSpec = 
+static const WalkerSpec redGoriyaSpec =
 {
     goriyaAnimMap,
     12,
@@ -224,7 +224,7 @@ static const WalkerSpec redGoriyaSpec =
     Obj_None
 };
 
-static const WalkerSpec redDarknutSpec = 
+static const WalkerSpec redDarknutSpec =
 {
     darknutAnimMap,
     16,
@@ -233,7 +233,7 @@ static const WalkerSpec redDarknutSpec =
     Obj_None
 };
 
-static const WalkerSpec blueDarknutSpec = 
+static const WalkerSpec blueDarknutSpec =
 {
     darknutAnimMap,
     16,
@@ -242,7 +242,7 @@ static const WalkerSpec blueDarknutSpec =
     Obj_None
 };
 
-static const WalkerSpec gibdoSpec = 
+static const WalkerSpec gibdoSpec =
 {
     gibdoAnimMap,
     16,
@@ -484,7 +484,7 @@ void Walker::TryShooting()
     if ( spec->shotType == Obj_None )
         return;
 
-    bool isBlue = GetType() == Obj_BlueFastOctorock || GetType() == Obj_BlueSlowOctorock 
+    bool isBlue = GetType() == Obj_BlueFastOctorock || GetType() == Obj_BlueSlowOctorock
         || GetType() == Obj_BlueMoblin || GetType() == Obj_BlueLynel;
 
     if ( isBlue || shootTimer != 0 || (Util::GetRandom( 256 ) >= 0xF8) )
@@ -921,7 +921,7 @@ DelayedWanderer::DelayedWanderer( ObjType type, const WalkerSpec* spec, int turn
 //  Ghini
 //----------------------------------------------------------------------------
 
-static const WalkerSpec ghiniSpec = 
+static const WalkerSpec ghiniSpec =
 {
     ghiniAnimMap,
     12,
@@ -1031,7 +1031,7 @@ void Stalfos::Update()
 
 static const int gelWaitTimes[] = { 0x08, 0x18, 0x28, 0x38 };
 
-static const uint8_t    gelAnimMap[DirCount] = 
+static const uint8_t    gelAnimMap[DirCount] =
 {
     Anim_UW_Gel,
     Anim_UW_Gel,
@@ -1039,7 +1039,7 @@ static const uint8_t    gelAnimMap[DirCount] =
     Anim_UW_Gel,
 };
 
-static const WalkerSpec gelSpec = 
+static const WalkerSpec gelSpec =
 {
     gelAnimMap,
     4,
@@ -1120,7 +1120,7 @@ void Gel::UpdateWander()
 
 static const int zolWaitTimes[] = { 0x18, 0x28, 0x38, 0x48 };
 
-static const uint8_t    zolAnimMap[DirCount] = 
+static const uint8_t    zolAnimMap[DirCount] =
 {
     Anim_UW_Zol,
     Anim_UW_Zol,
@@ -1128,7 +1128,7 @@ static const uint8_t    zolAnimMap[DirCount] =
     Anim_UW_Zol,
 };
 
-static const WalkerSpec zolSpec = 
+static const WalkerSpec zolSpec =
 {
     zolAnimMap,
     16,
@@ -1233,7 +1233,7 @@ void Zol::UpdateSplit()
 //  Bubble
 //----------------------------------------------------------------------------
 
-static const uint8_t    bubbleAnimMap[DirCount] = 
+static const uint8_t    bubbleAnimMap[DirCount] =
 {
     Anim_UW_Bubble,
     Anim_UW_Bubble,
@@ -1241,7 +1241,7 @@ static const uint8_t    bubbleAnimMap[DirCount] =
     Anim_UW_Bubble
 };
 
-static const WalkerSpec bubbleSpec = 
+static const WalkerSpec bubbleSpec =
 {
     bubbleAnimMap,
     2,
@@ -1269,7 +1269,7 @@ void Bubble::Update()
         else
             World::SetSwordBlocked( GetType() == Obj_Bubble3 );
 
-        // The sword blocked state is cleared by touching blue bubbles (Bubble2) 
+        // The sword blocked state is cleared by touching blue bubbles (Bubble2)
         // and by refilling all hearts with the potion or pond fairy.
     }
 }
@@ -1293,7 +1293,7 @@ void Bubble::Draw()
 
 static const int vireOffsetY[] = { 0, -3, -2, -1, -1, 0, -1, 0, 0, 1, 0, 1, 1, 2, 3, 0 };
 
-static const uint8_t    vireAnimMap[DirCount] = 
+static const uint8_t    vireAnimMap[DirCount] =
 {
     Anim_UW_Vire_Down,
     Anim_UW_Vire_Down,
@@ -1301,7 +1301,7 @@ static const uint8_t    vireAnimMap[DirCount] =
     Anim_UW_Vire_Up,
 };
 
-static const WalkerSpec vireSpec = 
+static const WalkerSpec vireSpec =
 {
     vireAnimMap,
     20,
@@ -1378,7 +1378,7 @@ void Vire::UpdateSplit()
 //  LikeLike
 //----------------------------------------------------------------------------
 
-static const uint8_t    likeLikeAnimMap[DirCount] = 
+static const uint8_t    likeLikeAnimMap[DirCount] =
 {
     Anim_UW_LikeLike,
     Anim_UW_LikeLike,
@@ -1386,7 +1386,7 @@ static const uint8_t    likeLikeAnimMap[DirCount] =
     Anim_UW_LikeLike,
 };
 
-static const WalkerSpec likeLikeSpec = 
+static const WalkerSpec likeLikeSpec =
 {
     likeLikeAnimMap,
     24,
@@ -1452,7 +1452,7 @@ void LikeLike::Update()
 //  DigWanderer
 //----------------------------------------------------------------------------
 
-static const uint8_t    leeverAnimMap[DirCount] = 
+static const uint8_t    leeverAnimMap[DirCount] =
 {
     Anim_OW_Leever,
     Anim_OW_Leever,
@@ -1460,7 +1460,7 @@ static const uint8_t    leeverAnimMap[DirCount] =
     Anim_OW_Leever,
 };
 
-static const uint8_t    leeverHalfAnimMap[DirCount] = 
+static const uint8_t    leeverHalfAnimMap[DirCount] =
 {
     Anim_OW_LeeverHalf,
     Anim_OW_LeeverHalf,
@@ -1468,7 +1468,7 @@ static const uint8_t    leeverHalfAnimMap[DirCount] =
     Anim_OW_LeeverHalf,
 };
 
-static const uint8_t    moundAnimMap[DirCount] = 
+static const uint8_t    moundAnimMap[DirCount] =
 {
     Anim_OW_Mound,
     Anim_OW_Mound,
@@ -1476,7 +1476,7 @@ static const uint8_t    moundAnimMap[DirCount] =
     Anim_OW_Mound,
 };
 
-static const WalkerSpec blueLeeverHiddenSpec = 
+static const WalkerSpec blueLeeverHiddenSpec =
 {
     0,
     32,
@@ -1485,7 +1485,7 @@ static const WalkerSpec blueLeeverHiddenSpec =
     Obj_None
 };
 
-static const WalkerSpec blueLeeverMoundSpec = 
+static const WalkerSpec blueLeeverMoundSpec =
 {
     moundAnimMap,
     22,
@@ -1494,7 +1494,7 @@ static const WalkerSpec blueLeeverMoundSpec =
     Obj_None
 };
 
-static const WalkerSpec blueLeeverHalfSpec = 
+static const WalkerSpec blueLeeverHalfSpec =
 {
     leeverHalfAnimMap,
     2,
@@ -1503,7 +1503,7 @@ static const WalkerSpec blueLeeverHalfSpec =
     Obj_None
 };
 
-static const WalkerSpec blueLeeverFullSpec = 
+static const WalkerSpec blueLeeverFullSpec =
 {
     leeverAnimMap,
     10,
@@ -1512,7 +1512,7 @@ static const WalkerSpec blueLeeverFullSpec =
     Obj_None
 };
 
-static const WalkerSpec*    blueLeeverSpecs[] = 
+static const WalkerSpec*    blueLeeverSpecs[] =
 {
     &blueLeeverHiddenSpec,
     &blueLeeverMoundSpec,
@@ -1522,7 +1522,7 @@ static const WalkerSpec*    blueLeeverSpecs[] =
     &blueLeeverMoundSpec,
 };
 
-static const int    blueLeeverStateTimes[] = 
+static const int    blueLeeverStateTimes[] =
 {
     0x80,
     0x20,
@@ -1590,7 +1590,7 @@ BlueLeever::BlueLeever( int x, int y )
 //  Zora
 //----------------------------------------------------------------------------
 
-static uint8_t  zoraAnimMap[DirCount] = 
+static uint8_t  zoraAnimMap[DirCount] =
 {
     Anim_OW_Zora_Down,
     Anim_OW_Zora_Down,
@@ -1598,7 +1598,7 @@ static uint8_t  zoraAnimMap[DirCount] =
     Anim_OW_Zora_Up,
 };
 
-static const WalkerSpec zoraHiddenSpec = 
+static const WalkerSpec zoraHiddenSpec =
 {
     0,
     32,
@@ -1607,7 +1607,7 @@ static const WalkerSpec zoraHiddenSpec =
     Obj_None
 };
 
-static const WalkerSpec zoraMoundSpec = 
+static const WalkerSpec zoraMoundSpec =
 {
     moundAnimMap,
     22,
@@ -1616,7 +1616,7 @@ static const WalkerSpec zoraMoundSpec =
     Obj_None
 };
 
-static const WalkerSpec zoraHalfSpec = 
+static const WalkerSpec zoraHalfSpec =
 {
     zoraAnimMap,
     2,
@@ -1625,7 +1625,7 @@ static const WalkerSpec zoraHalfSpec =
     Obj_None
 };
 
-static const WalkerSpec zoraFullSpec = 
+static const WalkerSpec zoraFullSpec =
 {
     zoraAnimMap,
     10,
@@ -1634,7 +1634,7 @@ static const WalkerSpec zoraFullSpec =
     Obj_None
 };
 
-static const WalkerSpec* zoraSpecs[] = 
+static const WalkerSpec* zoraSpecs[] =
 {
     &zoraHiddenSpec,
     &zoraMoundSpec,
@@ -1644,7 +1644,7 @@ static const WalkerSpec* zoraSpecs[] =
     &zoraMoundSpec,
 };
 
-static const int zoraStateTimes[] = 
+static const int zoraStateTimes[] =
 {
     2,
     0x20,
@@ -1683,7 +1683,7 @@ void Zora::Update()
                 facing = Dir_Down;
            else
                 facing = Dir_Up;
-        } 
+        }
     }
     else if ( state == 3 )
     {
@@ -1699,7 +1699,7 @@ void Zora::Update()
 
 int RedLeever::count;
 
-static const WalkerSpec redLeeverHiddenSpec = 
+static const WalkerSpec redLeeverHiddenSpec =
 {
     0,
     32,
@@ -1708,7 +1708,7 @@ static const WalkerSpec redLeeverHiddenSpec =
     Obj_None
 };
 
-static const WalkerSpec redLeeverMoundSpec = 
+static const WalkerSpec redLeeverMoundSpec =
 {
     moundAnimMap,
     16,
@@ -1717,7 +1717,7 @@ static const WalkerSpec redLeeverMoundSpec =
     Obj_None
 };
 
-static const WalkerSpec redLeeverHalfSpec = 
+static const WalkerSpec redLeeverHalfSpec =
 {
     leeverHalfAnimMap,
     16,
@@ -1726,7 +1726,7 @@ static const WalkerSpec redLeeverHalfSpec =
     Obj_None
 };
 
-static const WalkerSpec redLeeverFullSpec = 
+static const WalkerSpec redLeeverFullSpec =
 {
     leeverAnimMap,
     10,
@@ -1735,7 +1735,7 @@ static const WalkerSpec redLeeverFullSpec =
     Obj_None
 };
 
-static const WalkerSpec*    redLeeverSpecs[] = 
+static const WalkerSpec*    redLeeverSpecs[] =
 {
     &redLeeverHiddenSpec,
     &redLeeverMoundSpec,
@@ -1745,7 +1745,7 @@ static const WalkerSpec*    redLeeverSpecs[] =
     &redLeeverMoundSpec,
 };
 
-static const int redLeeverStateTimes[] = 
+static const int redLeeverStateTimes[] =
 {
     0x00,
     0x10,
@@ -1782,7 +1782,7 @@ void RedLeever::Update()
 
     if ( state == 0 )
     {
-        if ( RedLeever::count >= 2 
+        if ( RedLeever::count >= 2
             || World::GetStunTimer( RedLeeverClassTimerSlot ) != 0 )
             return;
         if ( !TargetPlayer() )
@@ -1925,7 +1925,7 @@ struct FlyerSpec
     int             speed;
 };
 
-static uint8_t peahatAnimMap[DirCount] = 
+static uint8_t peahatAnimMap[DirCount] =
 {
     Anim_OW_Peahat,
     Anim_OW_Peahat,
@@ -1933,7 +1933,7 @@ static uint8_t peahatAnimMap[DirCount] =
     Anim_OW_Peahat
 };
 
-FlyerSpec peahatSpec = 
+FlyerSpec peahatSpec =
 {
     peahatAnimMap,
     Sheet_Npcs,
@@ -1941,7 +1941,7 @@ FlyerSpec peahatSpec =
     0xA0
 };
 
-Flyer::StateFunc Flyer::sStateFuncs[] = 
+Flyer::StateFunc Flyer::sStateFuncs[] =
 {
     &Flyer::UpdateHastening,
     &Flyer::UpdateFullSpeed,
@@ -2206,7 +2206,7 @@ void Peahat::Update()
 //  FlyingGhini
 //----------------------------------------------------------------------------
 
-static uint8_t  flyingGhiniAnimMap[DirCount] = 
+static uint8_t  flyingGhiniAnimMap[DirCount] =
 {
     Anim_OW_Ghini_Right,
     Anim_OW_Ghini_Left,
@@ -2214,7 +2214,7 @@ static uint8_t  flyingGhiniAnimMap[DirCount] =
     Anim_OW_Ghini_UpLeft,
 };
 
-FlyerSpec flyingGhiniSpec = 
+FlyerSpec flyingGhiniSpec =
 {
     flyingGhiniAnimMap,
     Sheet_Npcs,
@@ -2285,7 +2285,7 @@ int FlyingGhini::GetFrame()
 //  Keese
 //----------------------------------------------------------------------------
 
-static uint8_t  keeseAnimMap[DirCount] = 
+static uint8_t  keeseAnimMap[DirCount] =
 {
     Anim_UW_Keese,
     Anim_UW_Keese,
@@ -2293,7 +2293,7 @@ static uint8_t  keeseAnimMap[DirCount] =
     Anim_UW_Keese,
 };
 
-FlyerSpec blueKeeseSpec = 
+FlyerSpec blueKeeseSpec =
 {
     keeseAnimMap,
     Sheet_Npcs,
@@ -2301,7 +2301,7 @@ FlyerSpec blueKeeseSpec =
     0xC0
 };
 
-FlyerSpec redKeeseSpec = 
+FlyerSpec redKeeseSpec =
 {
     keeseAnimMap,
     Sheet_Npcs,
@@ -2309,7 +2309,7 @@ FlyerSpec redKeeseSpec =
     0xC0
 };
 
-FlyerSpec blackKeeseSpec = 
+FlyerSpec blackKeeseSpec =
 {
     keeseAnimMap,
     Sheet_Npcs,
@@ -2383,7 +2383,7 @@ int Keese::GetFrame()
 //  Moldorm
 //----------------------------------------------------------------------------
 
-static const uint8_t  moldormAnimMap[DirCount] = 
+static const uint8_t  moldormAnimMap[DirCount] =
 {
     Anim_UW_Moldorm,
     Anim_UW_Moldorm,
@@ -2391,7 +2391,7 @@ static const uint8_t  moldormAnimMap[DirCount] =
     Anim_UW_Moldorm,
 };
 
-static const FlyerSpec moldormSpec = 
+static const FlyerSpec moldormSpec =
 {
     moldormAnimMap,
     Sheet_Npcs,
@@ -2557,7 +2557,7 @@ void Moldorm::ShiftFacings()
         Object* curObj  = World::GetObject( slot );
         Object* nextObj = World::GetObject( slot + 1 );
 
-        if (   curObj  == nullptr || curObj->GetType()  != Obj_Moldorm 
+        if (   curObj  == nullptr || curObj->GetType()  != Obj_Moldorm
             || nextObj == nullptr || nextObj->GetType() != Obj_Moldorm )
             continue;
 
@@ -2582,7 +2582,7 @@ int Moldorm::GetFrame()
 //  Patra
 //----------------------------------------------------------------------------
 
-static uint8_t patraAnimMap[DirCount] = 
+static uint8_t patraAnimMap[DirCount] =
 {
     Anim_B3_Patra,
     Anim_B3_Patra,
@@ -2590,7 +2590,7 @@ static uint8_t patraAnimMap[DirCount] =
     Anim_B3_Patra
 };
 
-FlyerSpec patraSpec = 
+FlyerSpec patraSpec =
 {
     patraAnimMap,
     Sheet_Boss,
@@ -2781,7 +2781,7 @@ void PatraChild::Draw()
 
 void PatraChild::UpdateStart()
 {
-    static const uint8_t patraEntryAngles[] = 
+    static const uint8_t patraEntryAngles[] =
     { 0x14, 0x10, 0xC, 0x8, 0x4, 0, 0x1C };
 
     int slot = World::GetCurrentObjectSlot();
@@ -2842,7 +2842,7 @@ void PatraChild::UpdateTurn()
     }
 
     const int TurnSpeed = 0x20;
-    static const uint8_t sinCos[] = 
+    static const uint8_t sinCos[] =
     { 0x00, 0x18, 0x30, 0x47, 0x5A, 0x6A, 0x76, 0x7D, 0x80, 0x7D, 0x76, 0x6A, 0x5A, 0x47, 0x30, 0x18 };
 
     index = patraAngle[slot] & 0xF;
@@ -2882,7 +2882,7 @@ struct JumperSpec
     const uint8_t*  accelMap;
 };
 
-static uint8_t tektiteAnimMap[DirCount] = 
+static uint8_t tektiteAnimMap[DirCount] =
 {
     Anim_OW_Tektite,
     Anim_OW_Tektite,
@@ -2890,7 +2890,7 @@ static uint8_t tektiteAnimMap[DirCount] =
     Anim_OW_Tektite
 };
 
-static uint8_t boulderAnimMap[DirCount] = 
+static uint8_t boulderAnimMap[DirCount] =
 {
     Anim_OW_Boulder,
     Anim_OW_Boulder,
@@ -2898,43 +2898,43 @@ static uint8_t boulderAnimMap[DirCount] =
     Anim_OW_Boulder
 };
 
-static const uint8_t blueTektiteSpeeds[] = 
+static const uint8_t blueTektiteSpeeds[] =
 {
-    0, 
-    0x40, 
-    0x40, 
-    0, 
-    0, 
-    0x40, 
-    0x40, 
-    0, 
-    0, 
-    0x30, 
+    0,
+    0x40,
+    0x40,
+    0,
+    0,
+    0x40,
+    0x40,
+    0,
+    0,
+    0x30,
     0x30
 };
 
-static const uint8_t redTektiteSpeeds[] = 
+static const uint8_t redTektiteSpeeds[] =
 {
-    0, 
-    0x80, 
-    0x80, 
-    0, 
-    0, 
-    0x80, 
-    0x80, 
-    0, 
-    0, 
-    0x50, 
+    0,
+    0x80,
+    0x80,
+    0,
+    0,
+    0x80,
+    0x80,
+    0,
+    0,
+    0x50,
     0x50
 };
 
-static const uint8_t boulderSpeeds[] = 
+static const uint8_t boulderSpeeds[] =
 {
-    0x60, 0x60, 
+    0x60, 0x60,
     0x60, 0x60, 0x60, 0x60, 0x60
 };
 
-JumperSpec blueTektiteSpec = 
+JumperSpec blueTektiteSpec =
 {
     tektiteAnimMap,
     32,
@@ -2944,7 +2944,7 @@ JumperSpec blueTektiteSpec =
     blueTektiteSpeeds
 };
 
-JumperSpec redTektiteSpec = 
+JumperSpec redTektiteSpec =
 {
     tektiteAnimMap,
     32,
@@ -2954,7 +2954,7 @@ JumperSpec redTektiteSpec =
     redTektiteSpeeds
 };
 
-JumperSpec boulderSpec = 
+JumperSpec boulderSpec =
 {
     boulderAnimMap,
     12,
@@ -2964,7 +2964,7 @@ JumperSpec boulderSpec =
     boulderSpeeds
 };
 
-int targetYOffset[] = 
+int targetYOffset[] =
 {
     0,
     0,
@@ -2979,7 +2979,7 @@ int targetYOffset[] =
     -0x20,
 };
 
-static const int jumperStartDirs[] = 
+static const int jumperStartDirs[] =
 {
     1,
     2,
@@ -3234,7 +3234,7 @@ void Boulders::ClearRoomData()
 //  Trap
 //----------------------------------------------------------------------------
 
-static const Point trapPos[] = 
+static const Point trapPos[] =
 {
     { 0x20, 0x60 },
     { 0x20, 0xC0 },
@@ -3244,7 +3244,7 @@ static const Point trapPos[] =
     { 0xB0, 0x90 },
 };
 
-static const int trapAllowedDirs[] = 
+static const int trapAllowedDirs[] =
 {
     5, 9, 6, 0xA, 1, 2
 };
@@ -3383,7 +3383,7 @@ void Trap::Draw()
 //  Rope
 //----------------------------------------------------------------------------
 
-const static uint8_t    ropeAnimMap[DirCount] = 
+const static uint8_t    ropeAnimMap[DirCount] =
 {
     Anim_UW_Rope_Right,
     Anim_UW_Rope_Left,
@@ -3656,7 +3656,7 @@ void PolsVoice::SetupJump()
 //  RedWizzrobe
 //----------------------------------------------------------------------------
 
-static const uint8_t wizzrobeAnimMap[DirCount] = 
+static const uint8_t wizzrobeAnimMap[DirCount] =
 {
     Anim_UW_Wizzrobe_Right,
     Anim_UW_Wizzrobe_Left,
@@ -3664,7 +3664,7 @@ static const uint8_t wizzrobeAnimMap[DirCount] =
     Anim_UW_Wizzrobe_Up
 };
 
-RedWizzrobe::StateFunc RedWizzrobe::sStateFuncs[] = 
+RedWizzrobe::StateFunc RedWizzrobe::sStateFuncs[] =
 {
     &RedWizzrobe::UpdateHidden,
     &RedWizzrobe::UpdateGoing,
@@ -3754,7 +3754,7 @@ void RedWizzrobe::UpdateVisible()
     CheckRedWizzrobeCollisions();
 }
 
-static const Direction wizzrobeDirs[] = 
+static const Direction wizzrobeDirs[] =
 {
     Dir_Down,
     Dir_Up,
@@ -3762,22 +3762,22 @@ static const Direction wizzrobeDirs[] =
     Dir_Left
 };
 
-static const int wizzrobeXOffsets[] = 
-{ 
-    0x00, 0x00, -0x20, 0x20, 0x00, 0x00, -0x40, 0x40, 
+static const int wizzrobeXOffsets[] =
+{
+    0x00, 0x00, -0x20, 0x20, 0x00, 0x00, -0x40, 0x40,
     0x00, 0x00, -0x30, 0x30, 0x00, 0x00, -0x50, 0x50
 };
 
-static const int wizzrobeYOffsets[] = 
+static const int wizzrobeYOffsets[] =
 {
-    -0x20, 0x20, 0x00, 0x00, -0x40, 0x40, 0x00, 0x00, 
+    -0x20, 0x20, 0x00, 0x00, -0x40, 0x40, 0x00, 0x00,
     -0x30, 0x30, 0x00, 0x00, -0x50, 0x50, 0x00, 0x00
 };
 
-static const int allWizzrobeCollisionXOffsets[] = 
+static const int allWizzrobeCollisionXOffsets[] =
 { 0xF, 0, 0, 4, 8, 0, 0, 4, 8, 0 };
 
-static const int allWizzrobeCollisionYOffsets[] = 
+static const int allWizzrobeCollisionYOffsets[] =
 { 4, 4, 0, 8, 8, 8, 0, -8, 0, 0 };
 
 static int CheckWizzrobeTileCollision( int x, int y, Direction dir )
@@ -3792,7 +3792,7 @@ static int CheckWizzrobeTileCollision( int x, int y, Direction dir )
     if ( !collision.Collides )
         return 0;
 
-    // This isn't quite the same as the original game, because the original contrasted 
+    // This isn't quite the same as the original game, because the original contrasted
     // blocks and water together with everything else.
 
     if ( World::CollidesWall( collision.TileBehavior ) )
@@ -3842,7 +3842,7 @@ void RedWizzrobe::UpdateComing()
 
 void RedWizzrobe::CheckRedWizzrobeCollisions()
 {
-    // If I really wanted, I could make a friend function or class to do this, which is the same 
+    // If I really wanted, I could make a friend function or class to do this, which is the same
     // as in BlueWizzrobe.
 
     invincibilityMask = 0xF6;
@@ -3915,10 +3915,10 @@ void BlueWizzrobeBase::MoveOrTeleport()
     MoveAndCollide();
 }
 
-static const int blueWizzrobeXSpeeds[] = 
+static const int blueWizzrobeXSpeeds[] =
 { 0, 1, -1, 0, 0, 1, -1, 0, 0, 1, -1 };
 
-static const int blueWizzrobeYSpeeds[] = 
+static const int blueWizzrobeYSpeeds[] =
 { 0, 0, 0, 0, 1, 1, 1, 0, -1, -1, -1 };
 
 void BlueWizzrobeBase::MoveAndCollide()
@@ -4011,13 +4011,13 @@ void BlueWizzrobeBase::Turn()
     TruncatePosition();
 }
 
-int blueWizzrobeTeleportXOffsets[] = 
+int blueWizzrobeTeleportXOffsets[] =
 { -0x20, 0x20, -0x20, 0x20 };
 
-int blueWizzrobeTeleportYOffsets[] = 
+int blueWizzrobeTeleportYOffsets[] =
 { -0x20, -0x20, 0x20, 0x20 };
 
-int blueWizzrobeTeleportDirs[] = 
+int blueWizzrobeTeleportDirs[] =
 { 0xA, 9, 6, 5 };
 
 void BlueWizzrobeBase::TryTeleporting()
@@ -4096,7 +4096,7 @@ void BlueWizzrobe::AnimateAndCheckCollisions()
 {
     animator.Advance();
 
-    // If I really wanted, I could make a friend function or class to do this, which is the same 
+    // If I really wanted, I could make a friend function or class to do this, which is the same
     // as in RedWizzrobe.
 
     invincibilityMask = 0xF6;
@@ -4252,9 +4252,9 @@ void Lamnola::Turn()
             && !World::CollidesWithTileMoving( objX, objY, facing, false ) )
             break;
 
-        // If there were a room that had lamnolas, and they could get surrounded on 3 sides, 
-        // then this would get stuck in an infinite loop. But, the only room with that configuration 
-        // has those blocks blocked off with a push block, which can only be pushed after all foes 
+        // If there were a room that had lamnolas, and they could get surrounded on 3 sides,
+        // then this would get stuck in an infinite loop. But, the only room with that configuration
+        // has those blocks blocked off with a push block, which can only be pushed after all foes
         // are killed.
 
         do
@@ -4307,15 +4307,15 @@ void Lamnola::CheckLamnolaCollisions()
 //  Wallmaster
 //----------------------------------------------------------------------------
 
-static const uint8_t wallmasterDirs[] = 
-{ 
-    0x01, 0x01, 0x08, 0x08, 0x08, 0x02, 0x02, 0x02, 
-    0xC1, 0xC1, 0xC4, 0xC4, 0xC4, 0xC2, 0xC2, 0xC2, 
+static const uint8_t wallmasterDirs[] =
+{
+    0x01, 0x01, 0x08, 0x08, 0x08, 0x02, 0x02, 0x02,
+    0xC1, 0xC1, 0xC4, 0xC4, 0xC4, 0xC2, 0xC2, 0xC2,
     0x42, 0x42, 0x48, 0x48, 0x48, 0x41, 0x41, 0x41,
     0x82, 0x82, 0x84, 0x84, 0x84, 0x81, 0x81, 0x81,
-    0xC4, 0xC4, 0xC2, 0xC2, 0xC2, 0xC8, 0xC8, 0xC8, 
+    0xC4, 0xC4, 0xC2, 0xC2, 0xC2, 0xC8, 0xC8, 0xC8,
     0x84, 0x84, 0x81, 0x81, 0x81, 0x88, 0x88, 0x88,
-    0x48, 0x48, 0x42, 0x42, 0x42, 0x44, 0x44, 0x44, 
+    0x48, 0x48, 0x42, 0x42, 0x42, 0x44, 0x44, 0x44,
     0x08, 0x08, 0x01, 0x01, 0x01, 0x04, 0x04, 0x04
 };
 
@@ -4335,8 +4335,8 @@ Wallmaster::Wallmaster()
     animator.anim = Graphics::GetAnimation( Sheet_Npcs, Anim_UW_Wallmaster );
 }
 
-void Wallmaster::CalcStartPosition( 
-    int playerOrthoCoord, int playerCoord, int dir, 
+void Wallmaster::CalcStartPosition(
+    int playerOrthoCoord, int playerCoord, int dir,
     int baseDirIndex, int leastCoord, int& orthoCoord, int& coordIndex )
 {
     Player* player = World::GetPlayer();
@@ -4619,7 +4619,7 @@ void Aquamentus::Animate()
 //  Dodongo
 //----------------------------------------------------------------------------
 
-static const uint8_t dodongoWalkAnimMap[DirCount] = 
+static const uint8_t dodongoWalkAnimMap[DirCount] =
 {
     Anim_B1_Dodongo_R,
     Anim_B1_Dodongo_L,
@@ -4627,7 +4627,7 @@ static const uint8_t dodongoWalkAnimMap[DirCount] =
     Anim_B1_Dodongo_U
 };
 
-static const uint8_t dodongoBloatAnimMap[DirCount] = 
+static const uint8_t dodongoBloatAnimMap[DirCount] =
 {
     Anim_B1_Dodongo_Bloated_R,
     Anim_B1_Dodongo_Bloated_L,
@@ -4635,7 +4635,7 @@ static const uint8_t dodongoBloatAnimMap[DirCount] =
     Anim_B1_Dodongo_Bloated_U
 };
 
-static const WalkerSpec dodongoWalkSpec = 
+static const WalkerSpec dodongoWalkSpec =
 {
     dodongoWalkAnimMap,
     20,
@@ -4644,14 +4644,14 @@ static const WalkerSpec dodongoWalkSpec =
     Obj_None
 };
 
-Dodongo::StateFunc Dodongo::sStateFuncs[] = 
+Dodongo::StateFunc Dodongo::sStateFuncs[] =
 {
     &Dodongo::UpdateMoveState,
     &Dodongo::UpdateBloatedState,
     &Dodongo::UpdateStunnedState,
 };
 
-Dodongo::StateFunc Dodongo::sBloatedSubstateFuncs[] = 
+Dodongo::StateFunc Dodongo::sBloatedSubstateFuncs[] =
 {
     &Dodongo::UpdateBloatedWait,
     &Dodongo::UpdateBloatedWait,
@@ -4798,7 +4798,7 @@ void Dodongo::CheckTickingBombHit( Bomb* bomb, int xDist, int yDist )
 
     for ( int i = 0; i < 2; i++ )
     {
-        if (   dist <  negBounds[index] 
+        if (   dist <  negBounds[index]
             || dist >= posBounds[index] )
             return;
 
@@ -4929,7 +4929,7 @@ void Dodongo::UpdateBloatedEnd()
 //  Manhandla
 //----------------------------------------------------------------------------
 
-static const uint8_t manhandlaAnimMap[5] = 
+static const uint8_t manhandlaAnimMap[5] =
 {
     Anim_B2_Manhandla_Hand_U,
     Anim_B2_Manhandla_Hand_D,
@@ -5091,8 +5091,8 @@ void Manhandla::TryShooting()
     {
         oldFrame = frame;
 
-        if ( frame == 0 
-            && Util::GetRandom( 256 ) >= 0xE0 
+        if ( frame == 0
+            && Util::GetRandom( 256 ) >= 0xE0
             && World::GetObject( 6 ) == nullptr )
         {
             ShootFireball( Obj_Fireball2, objX, objY );
@@ -5566,7 +5566,7 @@ void Gohma::CheckGohmaCollisions()
     for ( int i = 5; i > 0; i-- )
     {
         curCheckPart = i;
-        // With other object types, we'd only call CheckCollisions. But, Gohma needs 
+        // With other object types, we'd only call CheckCollisions. But, Gohma needs
         // to pass down the index of the current part.
         CheckCollisions();
         objX += 8;
@@ -5580,7 +5580,7 @@ void Gohma::CheckGohmaCollisions()
 //  GleeokHead
 //----------------------------------------------------------------------------
 
-static const uint8_t gleeokHeadAnimMap[DirCount] = 
+static const uint8_t gleeokHeadAnimMap[DirCount] =
 {
     Anim_B2_Gleeok_Head2,
     Anim_B2_Gleeok_Head2,
@@ -5588,7 +5588,7 @@ static const uint8_t gleeokHeadAnimMap[DirCount] =
     Anim_B2_Gleeok_Head2,
 };
 
-static const FlyerSpec gleeokHeadSpec = 
+static const FlyerSpec gleeokHeadSpec =
 {
     gleeokHeadAnimMap,
     Sheet_Boss,
@@ -5820,7 +5820,7 @@ Point GleeokNeck::GetPartLocation( int partIndex )
 
 void GleeokNeck::Init( int index )
 {
-    static const uint8_t startYs[] = 
+    static const uint8_t startYs[] =
     { 0x6F, 0x74, 0x79, 0x7E, 0x83 };
 
     for ( int i = 0; i < MaxParts; i++ )
@@ -5905,7 +5905,7 @@ void GleeokNeck::MoveHead()
 void GleeokNeck::TryShooting()
 {
     int r = Util::GetRandom( 256 );
-    if (   r < 0x20 
+    if (   r < 0x20
         && World::GetObject( LastMonsterSlot ) == nullptr )
     {
         ShootFireball( Obj_Fireball2, parts[ShooterIndex].x, parts[ShooterIndex].y );
@@ -6021,7 +6021,7 @@ void GleeokNeck::Stretch( int index, const Limits& xLimits, const Limits& yLimit
     if ( distance >= yLimits.values[1] )
         funcIndex += 3;
 
-    static const Func   funcs[] = 
+    static const Func   funcs[] =
     {
         &GleeokNeck::CrossedNoLimits,
         &GleeokNeck::CrossedLowLimit,
@@ -6152,7 +6152,7 @@ void Ganon::Draw()
         uint8_t Flags;
     };
 
-    static const SlashSpec slashSpecs[] = 
+    static const SlashSpec slashSpecs[] =
     {
         { Sheet_Boss,           Anim_B3_Slash_U,    0 },
         { Sheet_PlayerAndItems, Anim_PI_Slash,      1 },
@@ -6495,8 +6495,8 @@ void Zelda::Update()
         int     playerX = player->GetX();
         int     playerY = player->GetY();
 
-        if (   playerX >= ZeldaLineX1 
-            && playerX <= ZeldaLineX2 
+        if (   playerX >= ZeldaLineX1
+            && playerX <= ZeldaLineX2
             && playerY <= ZeldaLineY )
         {
             state = 1;
@@ -6514,7 +6514,6 @@ void Zelda::Update()
         if ( objTimer == 0 )
         {
             player->SetState( Player::Idle );
-            World::WinGame();
         }
     }
 }
@@ -6635,7 +6634,7 @@ void RupeeStash::Draw()
 //  Fairy
 //----------------------------------------------------------------------------
 
-static const uint8_t fairyAnimMap[DirCount] = 
+static const uint8_t fairyAnimMap[DirCount] =
 {
     Anim_PI_Fairy,
     Anim_PI_Fairy,
@@ -6643,7 +6642,7 @@ static const uint8_t fairyAnimMap[DirCount] =
     Anim_PI_Fairy
 };
 
-FlyerSpec fairySpec = 
+FlyerSpec fairySpec =
 {
     fairyAnimMap,
     Sheet_PlayerAndItems,
@@ -6793,7 +6792,7 @@ void PondFairy::UpdateHealing()
     }
 
     Profile& profile = World::GetProfile();
-    int maxHeartsValue = profile.GetMaxHeartsValue();
+    int maxHeartsValue = 3;//profile.GetMaxHeartsValue();
 
     Sound::PlayEffect( SEffect_character );
 
@@ -6965,9 +6964,9 @@ Object* MakeMonster( ObjType type, int x, int y )
     case Obj_Wallmaster: obj = new Wallmaster(); break;
     case Obj_Rope: obj = new Rope( x, y ); break;
     case Obj_Stalfos: obj = new Stalfos( x, y ); break;
-    case Obj_Bubble1: 
-    case Obj_Bubble2: 
-    case Obj_Bubble3: 
+    case Obj_Bubble1:
+    case Obj_Bubble2:
+    case Obj_Bubble3:
         obj = new Bubble( type, x, y );
         break;
     case Obj_PondFairy: obj = new PondFairy(); break;

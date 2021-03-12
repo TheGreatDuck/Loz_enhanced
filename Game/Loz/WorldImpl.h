@@ -136,13 +136,6 @@ public:
 
     GameMode        lastMode;
     GameMode        curMode;
-    StatusBar       statusBar;
-    Submenu         menu;
-    Credits*        credits;
-    TextBox*        textBox1;
-    TextBox*        textBox2;
-    Menu*           gameMenu;
-    Menu*           nextGameMenu;
 
 private:
     struct PlayState
@@ -516,7 +509,6 @@ public:
     uint8_t         whirlwindTeleporting;   // 522
     uint8_t         teleportingRoomIndex;   // 523
     uint8_t         pause;                  // E0
-    uint8_t         submenu;                // E1
     int             submenuOffsetY;         // EC
     bool            statusBarVisible;
     uint8_t         levelKillCounts[LevelBlockRooms];
@@ -584,9 +576,6 @@ public:
     void GotoWinGame();
     void GotoLeaveCellar();
     void GotoDie();
-    void GotoFileMenu( const std::shared_ptr<ProfileSummarySnapshot>& summaries );
-    void GotoRegisterMenu( const std::shared_ptr<ProfileSummarySnapshot>& summaries );
-    void GotoEliminateMenu( const std::shared_ptr<ProfileSummarySnapshot>& summaries );
 
 public:
     const uint8_t* GetString( int stringId );
@@ -732,19 +721,6 @@ private:
     void UpdateEndLevel_Furl();
     void DrawEndLevel();
 
-    void UpdateWinGame();
-    void UpdateWinGame_Start();
-    void UpdateWinGame_Text1();
-    void UpdateWinGame_Stand();
-    void UpdateWinGame_Hold1();
-    void UpdateWinGame_Colors();
-    void UpdateWinGame_Hold2();
-    void UpdateWinGame_Text2();
-    void UpdateWinGame_Hold3();
-    void UpdateWinGame_NoObjects();
-    void UpdateWinGame_Credits();
-    void DrawWinGame();
-
     void GotoStairs( TileBehavior behavior );
     void UpdateStairsState();
     void DrawStairsState();
@@ -788,16 +764,6 @@ private:
     void UpdateDie_GameOver();
     void DrawDie();
 
-    void GotoContinueQuestion();
-    void UpdateContinueQuestion();
-    void DrawContinueQuestion();
-
-    void GotoFileMenu();
-    void UpdateGameMenu();
-    void UpdateRegisterMenu();
-    void UpdateEliminateMenu();
-    void DrawGameMenu();
-
     int FindCellarRoomId( int mainRoomId, bool& isLeft );
     void SetPlayerExitPosOW( int roomId );
 
@@ -834,7 +800,7 @@ private:
     void BlockTileAction( int row, int col, TileInteraction interaction );
     void DoorTileAction( int row, int col, TileInteraction interaction );
 
-    void CommonMakeObjectAction( int row, int col, TileInteraction interaction, 
+    void CommonMakeObjectAction( int row, int col, TileInteraction interaction,
         int& patchCount, MobPatchCells patchCells, ObjType objType );
 
 private:
